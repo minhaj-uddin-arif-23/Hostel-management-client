@@ -235,7 +235,7 @@ function Navbar() {
                       </p>
                     </li>
                     <li>
-                      <Link className="btn btn-sm  text-blue-900 font-semibold text-md my-2">
+                      <Link to={`/dashboard`} className="btn btn-sm  text-blue-900 font-semibold text-md my-2">
                         Dashboard
                         {/* <span className="badge">New</span> */}
                       </Link>
