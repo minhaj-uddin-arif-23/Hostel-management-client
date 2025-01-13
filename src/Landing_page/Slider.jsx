@@ -1,28 +1,41 @@
 import { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const Slider = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
+  const [userInputs, setUserInputs] = useState({});
+  const [submittedInputs, setSubmittedInputs] = useState({});
 
   const carouselSlides = [
     {
       img: "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Discover the beauty of nature in its purest form.",
+      description:
+        "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
       img: "https://images.unsplash.com/photo-1508873881324-c92a3fc536ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Feel the serenity of calm waters.",
+      description:
+        "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
       img: "https://images.unsplash.com/photo-1719749990914-a3ba54e6343f?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Experience the energy of urban landscapes.",
+      description:
+        "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
       img: "https://images.unsplash.com/photo-1467195468637-72eb862bb14e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Marvel at the colors of the setting sun.",
+      description:
+        "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
       img: "https://images.unsplash.com/photo-1532155297578-a43684be8db8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Journey through the peaceful forests.",
+      description:
+        "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
   ];
 
@@ -39,10 +52,22 @@ export const Slider = () => {
     [carouselSlides.length]
   );
 
+  const handleInputChange = (e) => {
+    setUserInputs({ ...userInputs, [currentSlider]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    setSubmittedInputs({
+      ...submittedInputs,
+      [currentSlider]: userInputs[currentSlider] || "",
+    });
+    toast.success("Input submitted: " + (userInputs[currentSlider] || ""));
+  };
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       nextSlider();
-    }, 3000);
+    }, 300000);
     return () => clearInterval(intervalId);
   }, [nextSlider]);
 
@@ -53,13 +78,7 @@ export const Slider = () => {
         onClick={prevSlider}
         className="absolute top-1/2 left-3 z-50 flex justify-center items-center bg-white rounded-full w-6 h-6 md:w-8 md:h-8"
       >
-        <svg
-          className="icon h-4 w-4 fill-black/50 md:h-6 md:w-6"
-          viewBox="0 0 1024 1024"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path>
-        </svg>
+        &lt;
       </button>
 
       {/* Arrow Right */}
@@ -67,28 +86,8 @@ export const Slider = () => {
         onClick={nextSlider}
         className="absolute top-1/2 z-50 right-3 flex justify-center items-center bg-white rounded-full w-6 h-6 md:w-8 md:h-8"
       >
-        <svg
-          className="icon h-4 w-4 fill-black/50 md:h-6 md:w-6"
-          viewBox="0 0 1024 1024"
-          xmlns="http://www.w3.org/2000/svg"
-          transform="rotate(180)"
-        >
-          <path d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path>
-        </svg>
+        &gt;
       </button>
-
-      {/* Dots */}
-      <div className="flex justify-center items-center rounded-full z-50 absolute bottom-4 w-full gap-1">
-        {carouselSlides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentSlider(idx)}
-            className={`rounded-full duration-500 bg-white ${
-              currentSlider === idx ? "w-8" : "w-2"
-            } h-2`}
-          ></button>
-        ))}
-      </div>
 
       {/* Carousel Container */}
       <div
@@ -97,7 +96,10 @@ export const Slider = () => {
       >
         {/* Slides */}
         {carouselSlides.map((slide, idx) => (
-          <div key={idx} className="relative min-w-full h-60 sm:h-96 md:h-[540px]">
+          <div
+            key={idx}
+            className="relative min-w-full h-60 sm:h-96 md:h-[540px]"
+          >
             <img
               src={slide.img}
               className="w-full h-full object-cover"
@@ -107,6 +109,24 @@ export const Slider = () => {
               <h2 className="text-lg md:text-2xl lg:text-3xl font-semibold text-center">
                 {slide.text}
               </h2>
+            </div>
+            <div className="absolute inset-x-0 bottom-16 flex flex-col items-center gap-4 bg-black/50 text-white p-4">
+              <p className="text-sm md:text-base text-center">
+                {slide.description}
+              </p>
+              <input
+                type="text"
+                value={userInputs[idx] || ""}
+                onChange={handleInputChange}
+                className="w-96 max-x-sm p-2 rounded-lg text-black"
+                placeholder="Add your comment..."
+              />
+              <button
+                onClick={handleSubmit}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                Submit
+              </button>
             </div>
           </div>
         ))}
