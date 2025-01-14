@@ -6,13 +6,17 @@ import { FcGoogle } from "react-icons/fc";
 import register from '../assets/register.svg'
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+// import imageUpload from '../../ '
 // import { Helmet } from "react-helmet";
 // import { AuthContext } from "../Shared_Context/AuthProvider";
 // import Lottie from "lottie-react";
 import { Helmet } from "react-helmet";
 import useAuth from "../Hook/useAuth";
 import { auth } from "../firebase/_firebase_init";
+import { imageUpload } from './../Shared/Image_api';
+
+
+
 
 export default function Register() {
 
@@ -31,8 +35,10 @@ export default function Register() {
     const Name = e.target.name.value;
     const Email = e.target.email.value;
     const Password = e.target.password.value;
-    const Photo = e.target.photo.value;
+ 
     const acceptTearm = e.target.checked.checked;
+      const image = e.target.image.files[0]
+      const photoURL = await imageUpload(image)
 
     setErrorMsg("");
     setSuccess(false);
@@ -55,8 +61,8 @@ export default function Register() {
     try{
       const result = await createUser(Email,Password)
     
-      await updateUserInfo(Name,Photo)
-      setUser({...result.user,photoURL:Photo,displayName:Name})
+      await updateUserInfo(Name,photoURL)
+      setUser({...result.user,photoURL:photoURL,displayName:Name})
       toast.success("Registration successfully");
       navigate('/');
     }catch(err){
@@ -143,13 +149,13 @@ export default function Register() {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-lg">Photo</span>
+                  <span className="label-text text-lg">Image</span>
                 </label>
                 <input
-                  name="photo"
-                  type="url"
+                  name="image"
+                  type="file"
                   placeholder="Photo URL"
-                  className="input input-bordered"
+                  className=""
                   required
                 />
               </div>

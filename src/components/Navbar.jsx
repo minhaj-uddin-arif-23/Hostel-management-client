@@ -217,7 +217,7 @@ function Navbar() {
                         <img
                           src={user?.photoURL}
                           className="w-10 h-10 rounded-full"
-                          // title={user?.displayName}
+                          referrerPolicy="no-refferer"
                           alt=""
                         />
                         <span className="absolute bottom-[2px] right-0 size-3 rounded-full border-[2px] border-white bg-green-500"></span>
