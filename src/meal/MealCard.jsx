@@ -29,3 +29,16 @@ export default function MealCard({items}) {
     </div>
   )
 }
+// const handleLikeUpdate =async () => {
+  //  try{
+  //    const res = axiosSequre.patch(`/meal/like/${id}`,{
+  //     likeIncrease:count,
+  //   })
+  //   if(res.modifiedCount > 0){
+  //     toast.success("Wow you like it")
+  //     setCount(count + 1)
+  //   }
+  //  }catch(error){
+  //           toast.error("Some mistake you")
+  //           console.log(error)
+  //  }

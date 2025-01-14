@@ -13,7 +13,7 @@ export default function MealShow({data}) {
       return '<span class="' + className + '">' + (index + 1) + "</span>";
     },
   };
-  console.log( 'Another', data)
+  // console.log( 'Another', data)
   return (
     <div>
       <div>

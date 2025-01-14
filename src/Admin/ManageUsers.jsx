@@ -34,7 +34,7 @@ function ManageUsers() {
         users?.map((user,index)=><>
       <tr>
         <th>{index+1}</th>
-        <td>{user.name}</td>
+        <td>{user?.name}</td>
         <td>{user?.email}</td>
         <td>{user?.badge}</td>
       </tr>

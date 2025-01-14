@@ -1,11 +1,11 @@
-import React from "react";
-import useMeal from "../Hook/useMeal";
+import React,{useState} from "react";
+// import useMeal from "../Hook/useMeal";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../Hook/useAxiosPublic";
 import { Link, useParams } from "react-router-dom";
-// import { desc } from "framer-motion/m";
 import { SlLike } from "react-icons/sl";
 function MealDetails() {
+  const [count,setCount] = useState(1)
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const { data: mealDetails = [] } = useQuery({
@@ -15,7 +15,7 @@ function MealDetails() {
       return res.data;
     },
   });
-  
+
   const {
     title,
     category,
@@ -31,6 +31,8 @@ function MealDetails() {
     review_count,
     _id,
   } = mealDetails || {};
+  // TODO LIKE BUTTON INCREASE
+
   return (
     <div>
       <div className="flex items-center justify-center mt-10">
@@ -46,12 +48,12 @@ function MealDetails() {
               <p>{StartDate}</p>
               <p> Rating {rating}</p>
             </div>
-            <p className="btn btn-sm">
-              
-               
+            <button
+            onClick={(data)=>setCount(data)}
+             className="btn btn-sm">     
                <SlLike /> 
-                {like}
-            </p>
+                {like} {count}
+            </button>
             <p className="btn btn-sm">Meal Request</p>
             {/* <p>{}</p> */}
             <div className="flex justify-between">

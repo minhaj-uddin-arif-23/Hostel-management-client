@@ -17,6 +17,7 @@ import ManageUsers from "../Admin/ManageUsers";
 import ServeMeals from "../Admin/ServeMeals";
 import UpcomingMeals from "../Admin/UpcomingMeals";
 import MealDetails from "../meal/MealDetails";
+import UpdateItem from "../Admin/UpdateItem";
 
 export const router = createBrowserRouter([
   {
@@ -91,11 +92,18 @@ export const router = createBrowserRouter([
         path:'paymenthistory',
         element:<PaymentHistory />,
       },
+      {
+        path:'updateItem/:id',
+        element:<UpdateItem />,
+        loader:({params}) => fetch(`http://localhost:8000/meal-one-get/${params.id}`)
+      }
     ]
   },
   {
     path:'/meal/:id',
     element:<MealDetails />,
     
-  }
+  },
+
+
 ])
