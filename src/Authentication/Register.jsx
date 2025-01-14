@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
-import register from '../assets/register.svg'
+import register from "../assets/register.svg";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 // import imageUpload from '../../ '
@@ -13,16 +12,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import useAuth from "../Hook/useAuth";
 import { auth } from "../firebase/_firebase_init";
-import { imageUpload } from './../Shared/Image_api';
-
-
-
+import { imageUpload } from "./../Shared/Image_api";
 
 export default function Register() {
-
-    const {google, createUser,  updateUserInfo} = useAuth()
-    const [user,setUser] =useState(null)
-  const [errorMsg, setErrorMsg] = useState(""); 
+  const { google, createUser, updateUserInfo } = useAuth();
+  const [user, setUser] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
   const [success, setSuccess] = useState(false);
   // state for password eye show
   const location = useLocation();
@@ -35,11 +30,11 @@ export default function Register() {
     const Name = e.target.name.value;
     const Email = e.target.email.value;
     const Password = e.target.password.value;
- 
-    const acceptTearm = e.target.checked.checked;
-      const image = e.target.image.files[0]
-      const photoURL = await imageUpload(image)
 
+    const acceptTearm = e.target.checked.checked;
+    const image = e.target.image.files[0];
+    const photoURL = await imageUpload(image);
+    console.log(photoURL);
     setErrorMsg("");
     setSuccess(false);
     if (!acceptTearm) {
@@ -58,17 +53,19 @@ export default function Register() {
       return;
     }
     // create user, email and password
-    try{
-      const result = await createUser(Email,Password)
-    
-      await updateUserInfo(Name,photoURL)
-      setUser({...result.user,photoURL:photoURL,displayName:Name})
-      toast.success("Registration successfully");
-      navigate('/');
-    }catch(err){
-      
-      toast.error(err?.message)
+    try {
+      await createUser(Email, Password).then((result) => {
+        if (photoURL) {
+          updateUserInfo(Name, photoURL);
+          setUser({ ...result.user, photoURL: photoURL, displayName: Name });
+          toast.success("Registration successfully");
+          navigate("/");
+        }
+      });
+    } catch (err) {
+      toast.error(err?.message);
     }
+    // console.log(Name,Email,Password,photoURL)
   };
 
   //sign google and github
@@ -103,15 +100,15 @@ export default function Register() {
 
   return (
     <div className="hero bg-base-200 min-h-screen py-10">
-    <Helmet>
-      <title>Register</title>
-    </Helmet>
-    {/* <div className="flex flex-col lg:flex-row-reverse items-center justify-center"> */}
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
+      {/* <div className="flex flex-col lg:flex-row-reverse items-center justify-center"> */}
       {/* Lottie Animation */}
       <div className="w-full lg:w-1/2 flex justify-center">
         <img src={register} className="w-700" alt="" />
       </div>
-  
+
       {/* Registration Form */}
       <div className="w-full lg:w-1/2 px-6">
         <div className="bg-white rounded-lg shadow-lg p-8">
@@ -119,7 +116,7 @@ export default function Register() {
           <h1 className="font-semibold text-4xl text-center text-gray-800 mb-4">
             Register
           </h1>
-  
+
           {/* Google Login Button */}
           <div className="flex justify-center mb-6">
             <button
@@ -130,7 +127,7 @@ export default function Register() {
               <span className="ml-2 text-gray-600">Sign in with Google</span>
             </button>
           </div>
-  
+
           {/* Registration Form */}
           <form onSubmit={handleRegister}>
             <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -159,7 +156,7 @@ export default function Register() {
                   required
                 />
               </div>
-  
+
               {/* Email and Password */}
               <div className="form-control">
                 <label className="label">
@@ -192,7 +189,7 @@ export default function Register() {
                 </div>
               </div>
             </section>
-  
+
             {/* Terms and Conditions */}
             <div className="form-control mt-6">
               <label className="label cursor-pointer flex items-center gap-2">
@@ -200,32 +197,28 @@ export default function Register() {
                 <span className="label-text">Accept Terms & Conditions</span>
               </label>
             </div>
-  
+
             {/* Submit Button */}
             <div className="form-control mt-4">
-              <button className="btn btn-success w-full">
-                Sign Up
-              </button>
+              <button className="btn btn-success w-full">Sign Up</button>
             </div>
-  
+
             {/* Error Message */}
-            {errorMsg && <p className="text-red-500 mt-2 text-center">{errorMsg}</p>}
-  
+            {errorMsg && (
+              <p className="text-red-500 mt-2 text-center">{errorMsg}</p>
+            )}
+
             {/* Redirect to Login */}
             <div className="mt-6 text-center">
               <p className="mb-2">Already have an account?</p>
-              <Link
-                to={`/login`}
-                className="btn btn-outline btn-primary w-1/2"
-              >
+              <Link to={`/login`} className="btn btn-outline btn-primary w-1/2">
                 Sign In
               </Link>
             </div>
           </form>
         </div>
       </div>
-    {/* </div> */}
-  </div>
-  
+      {/* </div> */}
+    </div>
   );
 }

@@ -9,6 +9,13 @@ import MyProfile from "../Dashboard/UserDashboard/MyProfile";
 import RequestedMeals from "../Dashboard/UserDashboard/RequestedMeals";
 import MyReviews from "../Dashboard/UserDashboard/MyReviews";
 import PaymentHistory from "../Dashboard/UserDashboard/PaymentHistory";
+import AddMeal from "../Admin/AddMeal";
+import AdminProfile from "../Admin/AdminProfile";
+import AllMeals from "../Admin/AllMeals";
+import AllReviews from "../Admin/AllReviews";
+import ManageUsers from "../Admin/ManageUsers";
+import ServeMeals from "../Admin/ServeMeals";
+import UpcomingMeals from "../Admin/UpcomingMeals";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +44,36 @@ export const router = createBrowserRouter([
     path:'/dashboard',
     element:<All_Dashboards_ />,
     children:[
+      {
+        path:"addmeals",
+        element:<AddMeal />
+      },
+      {
+        path:"adminprofile",
+        element:<AdminProfile />
+      },
+      {
+        path:"allmeals",
+        element:<AllMeals />
+      },
+      {
+        path:"allreviews",
+        element:<AllReviews />
+      },
+
+      {
+        path:"manageusers",
+        element:<ManageUsers />
+      },
+      {
+        path:"servemeals",
+        element:<ServeMeals />
+      },
+      {
+        path:"upcomingmeals",
+        element:<UpcomingMeals />
+      },
+      // user related navbar
       {
         path:'myprofile',
         element:<MyProfile />,
