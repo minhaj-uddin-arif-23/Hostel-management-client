@@ -36,24 +36,25 @@ export default function AddMeal() {
         title: data.title,
         category: data.category,
         image: res.data.data.display_url,
-        price:parseFloat(data.price),
+        price: parseFloat(data.price),
         email: user?.email,
-        Ingredients:data.ingredients,
+        Ingredients: data.ingredients,
         Description: data.details,
-        StartDate:startDate,
-        rating:0,
-        like:0,
-        review_count:0
+        name:user?.displayName,
+        StartDate: startDate,
+        rating: 0,
+        like: 0,
+        review_count: 0,
       };
       // const token = localStorage.getItem("Access-token"); // get token in local storage
       const menuRes = await axiosSequre.post("/add-meal", menuItem);
-      
-console.log(menuRes)
+
+      console.log(menuRes);
       // console.log(menuRes.data);
       if (menuRes?.data?.insertedId) {
         // reset()
         toast.success("Menu item added");
-        console.log(menuRes?.data?.insertedId)
+        console.log(menuRes?.data?.insertedId);
         navigate("/");
       }
     }
@@ -78,7 +79,7 @@ console.log(menuRes)
               <input
                 {...register("title", { required: true })}
                 type="text"
-                placeholder="recipe name"
+                placeholder="Meal name"
                 className="input input-info w-full "
               />
             </label>
@@ -97,17 +98,13 @@ console.log(menuRes)
                 <option disabled value="default">
                   Select a category
                 </option>
-                <option value="salad">Cake</option>
-                <option value="pizza">Fish</option>
-                <option value="soup">Beef</option>
-                <option value="dessert">Vegetables</option>
-                <option value="drinks">Egg</option>
-                <option value="drinks">Juice</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="launch">Launch</option>
+                <option value="dinner">Dinner</option>
+                <option value="all meals">All Meals</option>
               </select>
             </label>
             {/* ingredients */}
-        
-
 
             {/* price */}
             <label className="form-control w-full ">
@@ -134,71 +131,68 @@ console.log(menuRes)
               <textarea
                 {...register("details")}
                 className="textarea textarea-info"
-                placeholder="recipe details"
+                placeholder="Meal details"
               ></textarea>
             </label>
           </div>
           {/* price */}
           {/* price */}
-      <div className="flex gap-4">
-      <label className="form-control w-1/2 ">
-            <div className="label">
-              <span className="label-text">Price*</span>
-            </div>
-            <input
-              {...register("price", { required: true })}
-              type="number"
-              placeholder="price"
-              className="input input-info w-full "
-            />
-          </label>
-          {/* admin name */}
-          <div>
-          <label className="form-control w-full ">
-              <div className="label">
-                <span className="label-text">Admin Name</span>
-              </div>
-              <input
-                {...register("email")}
-                type="email"
-                placeholder="email"
-                defaultValue={user?.displayName}
-                readOnly
-                className="input input-info w-full "
-              />
-            </label>
-          </div>
-            <div>
-              <div>
-                
-              </div>
-               {/* Date Picker */}
-     
-            </div>
-      </div>
-      <div>
-      <div className="flex gap-5">
+          <div className="flex gap-4">
             <label className="form-control w-1/2 ">
               <div className="label">
-                <span className="label-text">Ingredients</span>
+                <span className="label-text">Price*</span>
               </div>
               <input
-                {...register("ingredients", { required: true })}
-                type="text"
-                placeholder="recipe name"
+                {...register("price", { required: true })}
+                type="number"
+                placeholder="price"
                 className="input input-info w-full "
               />
             </label>
-            {/* date */}
-            <div className="form-control mt-9 w-1/2">
-        <DatePicker
-          selected={startDate}
-          className="input input-bordered input-success w-full"
-          onChange={(date) => setStartDate(date)} //only when value has changed
-        />
-      </div>
+            {/* admin name */}
+            <div>
+              <label className="form-control w-full ">
+                <div className="label">
+                  <span className="label-text">Admin Name</span>
+                </div>
+                <input
+                  {...register("name")}
+                  type="text"
+                  placeholder="name"
+                  defaultValue={user?.displayName}
+                  readOnly
+                  className="input input-info w-full "
+                />
+              </label>
             </div>
-      </div>
+            <div>
+              <div></div>
+              {/* Date Picker */}
+            </div>
+          </div>
+          <div>
+            <div className="flex gap-5">
+              <label className="form-control w-1/2 ">
+                <div className="label">
+                  <span className="label-text">Ingredients</span>
+                </div>
+                <input
+                  {...register("ingredients", { required: true })}
+                  type="text"
+                  placeholder="recipe name"
+                  className="input input-info w-full "
+                />
+              </label>
+              {/* date */}
+              <div className="form-control mt-9 w-1/2">
+                <DatePicker
+                  selected={startDate}
+                  className="input input-bordered input-success w-full"
+                  onChange={(date) => setStartDate(date)} //only when value has changed
+                />
+              </div>
+            </div>
+          </div>
 
           {/* image upload  */}
           <div>

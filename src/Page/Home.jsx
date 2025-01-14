@@ -3,14 +3,16 @@ import Loading from "../components/Loading";
 import { Slider } from "../Landing_page/Slider";
 import ContactForm from "../components/ContactForm";
 import FAQ from "../components/FAQ";
+import MealTab from "../meal/MealTab";
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="w-11/12 mx-auto">
+      <h1></h1>
       {/* All home components is Render this */}
       {/* <Loading /> */}
-      <Slider />
+      {/* <Slider /> */}
+      <MealTab />
 
       {/* category */}
       {/* fetured items/service */}

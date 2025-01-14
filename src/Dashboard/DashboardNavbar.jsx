@@ -35,6 +35,9 @@ export default function DashboardNavbar() {
           <li>
             <NavLink to={`manageusers`} className='btn btn-sm mt-3 '>Manage Users</NavLink>
           </li>
+          <li>
+            <NavLink to={'/'} className='btn btn-sm mt-3 '>Home</NavLink>
+          </li>
     </>: <>
     
            <div className='divider'> </div>

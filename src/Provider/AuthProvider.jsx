@@ -62,7 +62,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const storeUserInfo = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
+      // console.log(currentUser);
       if (currentUser) {
         setUser(currentUser);
         await axiosPublic.post(`/users/${currentUser?.email}`, {

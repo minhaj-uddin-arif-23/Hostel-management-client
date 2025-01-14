@@ -16,6 +16,7 @@ import AllReviews from "../Admin/AllReviews";
 import ManageUsers from "../Admin/ManageUsers";
 import ServeMeals from "../Admin/ServeMeals";
 import UpcomingMeals from "../Admin/UpcomingMeals";
+import MealDetails from "../meal/MealDetails";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
     element:<Register />
   },
   {
-    path:'/dashboard',
+    path:'dashboard',
     element:<All_Dashboards_ />,
     children:[
       {
@@ -91,5 +92,10 @@ export const router = createBrowserRouter([
         element:<PaymentHistory />,
       },
     ]
+  },
+  {
+    path:'/meal/:id',
+    element:<MealDetails />,
+    
   }
 ])

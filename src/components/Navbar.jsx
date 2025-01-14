@@ -213,7 +213,7 @@ function Navbar() {
                     className="btn btn-ghost btn-circle avatar"
                   >
                     <div className="w-10 rounded-full">
-                      <Link >
+                      <Link>
                         <img
                           src={user?.photoURL}
                           className="w-10 h-10 rounded-full"
@@ -230,27 +230,29 @@ function Navbar() {
                   >
                     <li>
                       <p className="justify-between">
-                        
-                        <span className=" ml-9 flex items-center justify-center font-semibold text-blue-800 " >{user?.displayName}</span>
+                        <span className=" ml-9 flex items-center justify-center font-semibold text-blue-800 ">
+                          {user?.displayName}
+                        </span>
                       </p>
                     </li>
                     <li>
-                      <Link to={`/dashboard`} className="btn btn-sm  text-blue-900 font-semibold text-md my-2">
+                      <Link
+                        to={`dashboard`}
+                        className="btn btn-sm  text-blue-900 font-semibold text-md my-2"
+                      >
                         Dashboard
                         {/* <span className="badge">New</span> */}
                       </Link>
                     </li>
                     <li>
-                    <button
-                onClick={signout}
-                className="  btn btn-sm  text-blue-900 font-semibold text-md"
-              >
-                Sign Out
-              </button>
+                      <button
+                        onClick={signout}
+                        className="  btn btn-sm  text-blue-900 font-semibold text-md"
+                      >
+                        Sign Out
+                      </button>
                     </li>
-                    <li>
-                      {/* <a>Logout</a> */}
-                    </li>
+                    <li>{/* <a>Logout</a> */}</li>
                   </ul>
                 </div>
                 {/* new  dropdown*/}
