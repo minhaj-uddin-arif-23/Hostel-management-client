@@ -4,6 +4,7 @@ import { Slider } from "../Landing_page/Slider";
 import ContactForm from "../components/ContactForm";
 import FAQ from "../components/FAQ";
 import MealTab from "../meal/MealTab";
+import Upgrating from "../components/Upgrating";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       {/* fetured items/service */}
       {/* offer section */}
       {/* promotional */}
+      <Upgrating />
       <ContactForm />
       <FAQ />
       {/* reviews */}

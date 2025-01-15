@@ -98,10 +98,10 @@ export default function AddMeal() {
                 <option disabled value="default">
                   Select a category
                 </option>
-                <option value="breakfast">Breakfast</option>
-                <option value="launch">Launch</option>
-                <option value="dinner">Dinner</option>
-                <option value="all meals">All Meals</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Launch">Launch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="All Meals">All Meals</option>
               </select>
             </label>
             {/* ingredients */}

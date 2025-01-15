@@ -18,6 +18,9 @@ import ServeMeals from "../Admin/ServeMeals";
 import UpcomingMeals from "../Admin/UpcomingMeals";
 import MealDetails from "../meal/MealDetails";
 import UpdateItem from "../Admin/UpdateItem";
+import Silver_package from "../Package/Silver_package";
+import Platinum_package from "../Package/Platinum_package";
+import Gold from "../Package/Gold";
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +107,18 @@ export const router = createBrowserRouter([
     element:<MealDetails />,
     
   },
+  {
+    path:'/silver/:id',
+    element:<Silver_package />
+  },
+  {
+    path:'/platinum/:id',
+    element:<Platinum_package />
+  },
+  {
+    path:'/gold/:id',
+    element:<Gold />
+  }
 
 
 ])
