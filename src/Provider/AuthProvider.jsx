@@ -64,25 +64,26 @@ function AuthProvider({ children }) {
       setUser(currentUser);
       // console.log(currentUser);
       if (currentUser) {
-        setUser(currentUser);
         await axiosPublic.post(`/users/${currentUser?.email}`, {
           name: currentUser?.displayName,
           image: currentUser?.photoURL,
-          email:currentUser?.email,
-          badge: 'bronze'
+          email: currentUser?.email,
+          badge: "bronze",
         });
         const userInfo = { email: currentUser?.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data?.token) {
             localStorage.setItem("Access-token", res.data.token);
-            // setLoading(false)
+            setLoading(false);
+            setUser(currentUser);
             // console.log(res.data.token)
           }
         });
       } else {
+        setLoading(false);
         localStorage.removeItem("Access-token");
       }
-      setLoading(false);
+
       // console.log('CurrentUser ----> is ',currentUser)
     });
     return () => {

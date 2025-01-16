@@ -30,6 +30,7 @@ export default function PostReview() {
       title,
       text,
       rating,
+      Like:0,
       user: {
         email: user?.email,
         name: user?.displayName,

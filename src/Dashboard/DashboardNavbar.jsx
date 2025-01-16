@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 export default function DashboardNavbar() {
-  const isAdmin = false
+  const isAdmin = true
   return (
     <div className=" flex w-11/12 mx-auto mt-1 ">
       <div className=" w-64 bg-green-300 min-h-screen p-14 space-y-">

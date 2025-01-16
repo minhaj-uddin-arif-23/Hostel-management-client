@@ -7,16 +7,17 @@ import Loading from "../../components/Loading";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 export default function RequestedMeals() {
   const { user } = useAuth();
-  // const axiosSequre = useAxiosSecure();
-  const axiosPublic = useAxiosPublic()
+  const axiosSequre = useAxiosSecure();
+  // const axiosPublic = useAxiosPublic()
   const { data: orderMeals =[] ,isLoading} = useQuery({
     queryKey: ["orderMeals",user?.email],
+    enabled:!!user,
     queryFn: async () => {
-      const {data} = await axiosPublic.get(`/requested-meal/${user?.email}`);
+      const {data} = await axiosSequre.get(`/requested-meal/${user?.email}`);
       return data
     },
   });
-  console.log('my requested data',orderMeals);
+  // console.log('my requested data',orderMeals);
   if(isLoading) return <Loading />
   return (
     <div>
