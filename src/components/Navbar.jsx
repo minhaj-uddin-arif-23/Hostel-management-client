@@ -204,7 +204,12 @@ function Navbar() {
           </div> */}
           <div className="flex">
             {user && user?.email ? (
-              <div className="flex gap-2 relative">
+
+              // *second dropdown ----------------------------------------
+
+              // *second dropdown ----------------------------------------
+
+              <div className="flex gap-2 relativ">
                 {/* new dropdown */}
                 <div className="dropdown dropdown-end">
                   <div

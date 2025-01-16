@@ -21,6 +21,8 @@ import UpdateItem from "../Admin/UpdateItem";
 import Silver_package from "../Package/Silver_package";
 import Platinum_package from "../Package/Platinum_package";
 import Gold from "../Package/Gold";
+import Meals from "../meal/Meals";
+import PostReview from "../components/PostReview";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path:'/',
         element:<Home />
+      },
+      {
+        path:'allmeals',
+        element: <Meals />
       },
       {
         path:'Blog',
@@ -118,6 +124,14 @@ export const router = createBrowserRouter([
   {
     path:'/gold/:id',
     element:<Gold />
+  },
+  // {
+  //   path:'/review/:id',
+  //   element:<PostReview />
+  // }
+  {
+    path:'/addreview/:id',
+    element:<PostReview />
   }
 
 

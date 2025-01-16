@@ -9,7 +9,7 @@ function Layout() {
       <header className='w-11/12 mx-auto bg-[#FAEBEFFF] '>
         <Navbar />
       </header>
-      <div>
+      <div className='w-11/12 mx-auto'>
         <Outlet />
       </div>
       <div>

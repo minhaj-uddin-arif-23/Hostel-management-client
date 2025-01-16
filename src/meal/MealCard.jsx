@@ -8,23 +8,34 @@ export default function MealCard({items}) {
   return (
     <div>
       <div>
-      <div className="card card-compact bg-base-100  w-80 shadow-xl">
+      <div className="card card-compact bg-base-100 w-80 shadow-xl">
   <figure>
     <img
-      src={image} className='w-full object-cover'
-      alt="Shoes" />
+      src={image}
+      className="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 ease-in-out hover:scale-110"
+      alt="Meal Plan"
+    />
   </figure>
   <div className="card-body">
-    <h2 className="card-title">{title}</h2>
-   <div className='flex justify-between'>
-   <p className='font-semibold text-lg'>${price}</p>
-   <p p className='font-semibold text-lg ml-28'>rating : {rating}</p>
-   </div>
-    <div className="card-actions mt-3">
-      <Link to={`/meal/${_id}`} className="btn btn-sm btn-warning">Details</Link>
+    <h2 className="card-title text-xl font-bold text-gray-800">{title}</h2>
+    {/* <p className="text-sm text-gray-600 mb-2 font-semibold">
+      {Description}
+    </p> */}
+    <div className="flex justify-between items-center">
+      <p className="font-semibold text-lg text-blue-600">${price}/month</p>
+      <p className="font-semibold text-lg text-gray-700">Rating: {rating}⭐</p>
+    </div>
+    <div className="card-actions mt-4">
+      <Link
+        to={`/meal/${_id}`}
+        className="btn btn-sm btn-outline  hover:bg-yellow-600"
+      >
+        View Details
+      </Link>
     </div>
   </div>
 </div>
+
       </div>
     </div>
   )
