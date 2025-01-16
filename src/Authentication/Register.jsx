@@ -34,7 +34,7 @@ export default function Register() {
     const acceptTearm = e.target.checked.checked;
     const image = e.target.image.files[0];
     const photoURL = await imageUpload(image);
-    console.log(photoURL);
+    // console.log(photoURL);
     setErrorMsg("");
     setSuccess(false);
     if (!acceptTearm) {

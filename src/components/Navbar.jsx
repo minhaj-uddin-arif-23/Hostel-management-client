@@ -209,7 +209,7 @@ function Navbar() {
 
               // *second dropdown ----------------------------------------
 
-              <div className="flex gap-2 relativ">
+              <div className="flex gap-2 relative">
                 {/* new dropdown */}
                 <div className="dropdown dropdown-end">
                   <div
@@ -231,7 +231,7 @@ function Navbar() {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[10] mt-3 w-52 p-2 shadow"
                   >
                     <li>
                       <p className="justify-between">
@@ -260,16 +260,7 @@ function Navbar() {
                     <li>{/* <a>Logout</a> */}</li>
                   </ul>
                 </div>
-                {/* new  dropdown*/}
-                {/* <Link to={`/profile`}>
-                  <img
-                    src={user?.photoURL}
-                    className="w-10 h-10 rounded-full"
-                    title={user?.displayName}
-                    alt=""
-                  />
-                  <span className="absolute bottom-[2px] right-0 size-3 rounded-full border-[2px] border-white bg-green-500"></span>
-                </Link> */}
+                
               </div>
             ) : (
               <div className="mt-3 ">

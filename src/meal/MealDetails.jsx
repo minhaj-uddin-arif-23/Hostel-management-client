@@ -59,7 +59,7 @@ function MealDetails() {
         review_count,
         status: "requested",
         User:{
-          name:user?.name,
+          name:user?.displayName,
           email:user?.email,
           image:user?.photoURL
 
