@@ -9,18 +9,20 @@ export default function Meals() {
 
   const axiosPublic = useAxiosPublic()
   const [filter,setFilter] = useState('')
+  const [search,setSearch] = useState('')
   const {data:meals=[],isLoading,refetch} = useQuery({
-    queryKey:['meals',filter],
+    queryKey:['meals',filter,search],
     queryFn: async () => {
-        const {data}= await axiosPublic(`/all-meal?filter=${filter}`)
+        const {data}= await axiosPublic(`/all-meals?filter=${filter}&search=${search}`)
         return data
     }
   })
   if(isLoading) <Loading />
-  console.log(filter)
+  // console.log(filter)
   return (
     <div>
       <div className="flex gap-5 w-1/2">
+      {/* category */}
         <select
           // defaultValue="default"
           className="select select-primary w-full "
@@ -34,7 +36,9 @@ export default function Meals() {
           <option value="Dinner">Dinner</option>
           <option value="All Meals">All Meals</option>
         </select>
+        {/* search */}
         <input
+        onChange={e => setSearch(e.target.value)}
           type="text"
           placeholder="Type your favourite Meal"
           className="input input-bordered input-info w-full max-w-xs"

@@ -4,7 +4,7 @@ import useAxiosPublic, { axiosPublic } from './useAxiosPublic';
 
 export default function useMeal() {
   const axiosPublic = useAxiosPublic()
-  const [filter,setFilter] = useState('')
+  // const [filter,setFilter] = useState('')
   const {data:meals=[],isLoading:loading,refetch} = useQuery({
     queryKey:['meals'],
     queryFn: async () => {
@@ -12,6 +12,6 @@ export default function useMeal() {
         return res.data
     }
   })
-  console.log(filter)
+  // console.log(filter)
   return[meals,loading,refetch]
 }
