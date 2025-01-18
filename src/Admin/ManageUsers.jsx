@@ -7,7 +7,7 @@ function ManageUsers() {
 
   const axiosSequre = useAxiosSecure()
   const {data: users=[]} = useQuery({
-    queryKey:['users'],
+    queryKey:['users'],  
     queryFn:async () =>{
       const res =await axiosSequre.get('/allUsers')
       return res.data
@@ -32,7 +32,7 @@ function ManageUsers() {
     <tbody>
       {
         users?.map((user,index)=><>
-      <tr>
+      <tr key={user._id}>
         <th>{index+1}</th>
         <td>{user?.name}</td>
         <td>{user?.email}</td>

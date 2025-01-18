@@ -12,7 +12,7 @@ function Home() {
       <h1></h1>
       {/* All home components is Render this */}
       {/* <Loading /> */}
-      {/* <Slider /> */}
+      <Slider />
       <MealTab />
 
       {/* category */}

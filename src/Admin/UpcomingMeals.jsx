@@ -16,6 +16,14 @@ export default function UpcomingMeals() {
       return result;
     },
   });
+  // Mutations
+  // const mutation = useMutation({
+  //   mutationFn: postTodo,
+  //   onSuccess: () => {
+  //     // Invalidate and refetch
+  //     queryClient.invalidateQueries({ queryKey: ['todos'] })
+  //   },
+  // })
   // if(isLoading) <Loading />
 
   // State for controlling modal visibility
@@ -57,11 +65,11 @@ export default function UpcomingMeals() {
       <div className="mt-8">
         <h2 className="text-xl font-semibold mb-4">Upcoming Meals</h2>
         <ul>
-          {upcomingMeals.map((meal, index) => (
+          {upcomingMeals?.map((meal, index) => (
             <li key={index} className="border p-4 mb-2 rounded">
-              <h3 className="text-lg font-bold">{meal.title}</h3>
+              {/* <h3 className="text-lg font-bold">{meal.title}</h3>
               <p>Category: {meal.category}</p>
-              <p>Price: ${meal.price}</p>
+              <p>Price: ${meal.price}</p> */}
             </li>
           ))}
         </ul>
@@ -79,7 +87,8 @@ export default function UpcomingMeals() {
                 <th>Image</th>
                 <th>price</th>
                 <th>Ingredients</th>
-                <th>Description</th>
+                <th>Description</th> 
+                <th>Actions</th> 
               </tr>
             </thead>
             <tbody>
@@ -93,6 +102,7 @@ export default function UpcomingMeals() {
                     <td>{meal.Ingredients}</td>
                    
                     <td>{meal.Description}</td>
+                    <td><button className="btn btn-sm btn-success text-white">Publish meal</button></td>
                     
                   </tr>
                 </>

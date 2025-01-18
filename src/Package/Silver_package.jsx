@@ -1,9 +1,11 @@
 import React from 'react'
+import Payment from '../Dashboard/UserDashboard/Payment'
 
 export default function Silver_package() {
   return (
-    <div className='grid grid-cols-12'>
-       <div className='grid col-span-8 ml-10 p-7 mt-10'>
+      <div>
+        <div className='grid grid-cols-12'>
+       <div className='grid col-span-6 ml- p-7 mt-'>
        <div className='grid col-span-8 p-6 bg-gray-50 rounded-lg shadow-md'>
   <h1 className='text-3xl font-bold text-gray-800 mb-4'>Silver Package</h1>
   <p className='text-lg text-gray-600 mb-4'>
@@ -29,9 +31,12 @@ export default function Silver_package() {
 </div>
 
        </div>
-       <div className='grid grid-cols-4'>
+       <div className='grid grid-cols-6'>
           {/* payment system  */}
+          <Payment />
        </div>
-    </div>
+        </div>
+                      
+      </div>
   )
 }

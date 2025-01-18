@@ -23,6 +23,7 @@ import Platinum_package from "../Package/Platinum_package";
 import Gold from "../Package/Gold";
 import Meals from "../meal/Meals";
 import PostReview from "../components/PostReview";
+import Payment from "../Dashboard/UserDashboard/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -132,6 +133,10 @@ export const router = createBrowserRouter([
   {
     path:'/addreview/:id',
     element:<PostReview />
+  },
+  {
+    path:'payment',
+    element:<Payment />
   }
 
 

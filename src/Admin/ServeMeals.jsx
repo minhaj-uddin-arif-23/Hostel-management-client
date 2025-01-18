@@ -38,7 +38,7 @@ export default function ServeMeals() {
           <table className="table table-zebra">
             {/* head */}
             <thead>
-              <tr>
+              <tr> 
                 <th>Title</th>
                 <th>Email</th>
                 <th>Name</th>

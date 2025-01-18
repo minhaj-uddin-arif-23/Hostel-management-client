@@ -1,8 +1,42 @@
 import React, { useState } from 'react'
-
+import faq from '../assets/faq.jpg'
 function FAQ() {
   const [isOpen, setIsOpen] = useState(null);
-  const dataArr = [{title: "How do I create an account?", description: 'To create an account, click on the "Sign Up" button and fill out the required information. Once done, you can enjoy the benefits of being a registered member.',}, {title: "What is your return policy?", description:"Our return policy allows you to return items within 30 days of purchase. Please visit our returns page for detailed instructions and to initiate a return.",}, {title: "Can I change my shipping address?", description:"Yes, you can change your shipping address before your order is shipped. Go to your account settings and update the shipping information accordingly.",}, {title: "Are there any discounts for loyal customers?", description: "We appreciate our loyal customers! Stay tuned for exclusive discounts, promotions, and special offers available to members of our loyalty program.",},];
+  const dataArr = [
+    {
+      title: "How do I book a room?",
+      description: 'To book a room, visit the "Room Booking" section on our website or app, select the room type, and complete the booking form. Once confirmed, you’ll receive a booking confirmation email.',
+    },
+    {
+      title: "What facilities are included in the hostel?",
+      description: "Our hostel provides facilities such as Wi-Fi, laundry services, 24/7 security, a common lounge, a fully-equipped kitchen, and study areas. For a detailed list, check our facilities page.",
+    },
+    {
+      title: "What is your cancellation policy?",
+      description: "Cancellations made at least 7 days prior to the check-in date will receive a full refund. For cancellations made later, a cancellation fee may apply. Refer to our cancellation policy page for more information.",
+    },
+    {
+      title: "Can I change my allocated room after check-in?",
+      description: "Room changes are allowed depending on availability. Please contact the hostel administration and submit a request to change your room.",
+    },
+    {
+      title: "Are there any discounts for long-term stays?",
+      description: "Yes, we offer special discounts for guests staying longer than 3 months. Contact our support team for details on long-term stay packages.",
+    },
+    {
+      title: "What are the check-in and check-out times?",
+      description: "Check-in starts at 2 PM, and check-out is by 11 AM. Early check-in or late check-out may be possible, subject to availability and additional charges.",
+    },
+    {
+      title: "Are meals included in the hostel fee?",
+      description: "Meals are not included in the base fee. However, we offer optional meal plans that you can subscribe to. Visit the dining section on our website for more details.",
+    },
+    {
+      title: "Is parking available at the hostel?",
+      description: "Limited parking spaces are available for an additional fee. Please contact us in advance to reserve a spot.",
+    },
+  ];
+  
   const toggle = (idx) => {
     setIsOpen((prevIdx) => (prevIdx === idx ? null : idx))
   };
@@ -12,7 +46,7 @@ function FAQ() {
       <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+      src={faq}
       className="max-w-sm rounded-lg shadow-2xl" />
     <div>
     <div className="mx-auto w-full max-w-[500px] rounded-lg">

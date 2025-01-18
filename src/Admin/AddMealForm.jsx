@@ -26,6 +26,7 @@ export default function AddMealForm({ closeModal }) {
     });
 
     if (res.data.success) {
+      console.log(res)
       const menuItem = {
         title: data.title,
         category: data.category,
@@ -42,7 +43,7 @@ export default function AddMealForm({ closeModal }) {
       };
 
       const menuRes = await axiosSequre.post("/add-upcoming-meal", menuItem);
-      console.log(menuRes)
+      // console.log(menuRes)
       if (menuRes?.data?.insertedId) {
         toast.success("Meal successfully added");
         // reset(); // Clear the form

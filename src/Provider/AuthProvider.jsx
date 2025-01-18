@@ -69,6 +69,7 @@ function AuthProvider({ children }) {
           image: currentUser?.photoURL,
           email: currentUser?.email,
           badge: "bronze",
+          // status:
         });
         const userInfo = { email: currentUser?.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
