@@ -32,7 +32,7 @@ function AllReviews() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSequre.delete(`/review/${id}`)
+        axiosSequre.delete(`/my-review-delete/${id}`)
           .then((res) => {
           if (res.data.deletedCount > 0) {
             refetch()

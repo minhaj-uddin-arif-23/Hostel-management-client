@@ -16,9 +16,13 @@ export default function AllMeals() {
     // console.log('all meals route --> ',meal)
   return (
     <div>
-      <div className='mb-12 flex mr-12 justify-end'>
-          <button className='btn btn-outline '>Sort by like</button>
-          <button className='btn btn-outline ml-4'>Sort by rating </button>
+    
+      <div className='mb-12 flex mr-12 justify-between'>
+      <div className='font-semibold'>Total {meal.length} Meal </div>
+       <div>
+       <button className='btn btn-outline '>Sort by like</button>
+       <button className='btn btn-outline ml-4'>Sort by rating </button>
+       </div>
       </div>
       <div>
       <div className="overflow-x-auto ">
