@@ -3,6 +3,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 function AllReviews() {
   const axiosSequre = useAxiosSecure();
@@ -79,12 +80,12 @@ function AllReviews() {
                       </button>{" "}
                     </td>
                     <td>
-                      <button
+                      <Link to={`/meal/${review.meal_id}`}
                         className="btn btn-sm btn-success text-white
                    "
                       >
                         View Meal
-                      </button>
+                      </Link>
                     </td>
                   </tr>
                 </>

@@ -68,7 +68,7 @@ function AuthProvider({ children }) {
           name: currentUser?.displayName,
           image: currentUser?.photoURL,
           email: currentUser?.email,
-          badge: "bronze",
+          badge: "Bronze",
           // status:
         });
       

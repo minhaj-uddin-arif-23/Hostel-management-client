@@ -13,7 +13,7 @@ export default function AllMeals() {
         return res.data
       }
     })
-    
+    // console.log('all meals route --> ',meal)
   return (
     <div>
       <div className='mb-12 flex mr-12 justify-end'>
@@ -49,7 +49,7 @@ export default function AllMeals() {
         <td>{item.rating}</td>
         <td><Link to={`/dashboard/updateItem/${item._id}`} className='btn btn-sm btn-warning'>update</Link></td>
         <td><button className='btn btn-sm btn-error text-white' >Delete</button></td>
-   <td>     <button className='btn btn-sm btn-success text-white'>view meal</button></td>
+   <td>     <Link to={`/meal/${item._id}`} className='btn btn-sm btn-success text-white'>view meal</Link></td>
       </tr>
       </>)
     }
