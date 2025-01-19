@@ -22,7 +22,7 @@ export default function MealShow({data}) {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 my-10 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 my-10 ">
           {data?.map((item) => (
             <MealCard key={item._id} items={item} />
           ))}

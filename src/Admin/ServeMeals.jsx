@@ -49,7 +49,7 @@ export default function ServeMeals() {
             <tbody>
               {mealrequest?.map((meal) => (
                 <>
-                  <tr>
+                  <tr key={meal._id}>
                     <th>{meal.title}</th>
                     <td>{meal.User?.email}</td>
                     <td>{meal.User?.name}</td>

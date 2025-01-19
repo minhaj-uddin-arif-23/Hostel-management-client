@@ -40,7 +40,7 @@ export default function RequestedMeals() {
             <tbody>
               {orderMeals?.map((meal) => (
                 <>
-                  <tr>
+                  <tr key={meal._id}>
                     <th>{meal.title}</th>
                     <td>{meal.like}</td>
                     <td>{meal.review_count}</td>

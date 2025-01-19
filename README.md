@@ -1,5 +1,7 @@
-USER -->
-  REQUESTED MEALS -> PAGINATION
-  MY_REVIEWS -> PAGINATION
-ADMIN -->
+Project name :
+    Hostel management System
+Admin Name & Password : 
 
+
+Live site Url :
+    

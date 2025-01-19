@@ -5,6 +5,8 @@ import ContactForm from "../components/ContactForm";
 import FAQ from "../components/FAQ";
 import MealTab from "../meal/MealTab";
 import Upgrating from "../components/Upgrating";
+import Benefitslider from "../Sliders/Benefitslider";
+import MobileSlider from "../Sliders/MobileSlider";
 
 function Home() {
   return (
@@ -14,7 +16,8 @@ function Home() {
       {/* <Loading /> */}
       <Slider />
       <MealTab />
-
+      <Benefitslider />
+      <MobileSlider />
       {/* category */}
       {/* fetured items/service */}
       {/* offer section */}

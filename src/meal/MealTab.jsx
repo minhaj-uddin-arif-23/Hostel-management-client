@@ -12,7 +12,7 @@ export default function MealTab() {
   const dinner = meal.filter((item) => item.category === "Dinner");
   // console.log(breakfast)
   return (
-    <div>
+    <div className="my-10">
       <Tabs defaultIndex={tabindex} onSelect={(index) => setIndex(index)}>
         <TabList>
           <Tab>Breakfast</Tab>

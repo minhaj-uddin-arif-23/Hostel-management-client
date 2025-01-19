@@ -27,117 +27,115 @@ import Payment from "../Dashboard/UserDashboard/Payment";
 
 export const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Layout />,
-    children:[
+    path: "/",
+    element: <Layout />,
+    children: [
       {
-        path:'/',
-        element:<Home />
+        path: "/",
+        element: <Home />,
       },
       {
-        path:'allmeals',
-        element: <Meals />
+        path: "allmeals",
+        element: <Meals />,
       },
       {
-        path:'Blog',
-        element:<Blog />
-      }
-    ]
+        path: "Blog",
+        element: <Blog />,
+      },
+    ],
   },
   {
-    path:'/login',
-    element:<Login />
+    path: "/login",
+    element: <Login />,
   },
   {
-    path:'/registration',
-    element:<Register />
+    path: "/registration",
+    element: <Register />,
   },
   {
-    path:'dashboard',
-    element:<All_Dashboards_ />,
-    children:[
+    path: "dashboard",
+    element: <All_Dashboards_ />,
+    children: [
       {
-        path:"addmeals",
-        element:<AddMeal />
+        path: "addmeals",
+        element: <AddMeal />,
       },
       {
-        path:"adminprofile",
-        element:<AdminProfile />
+        path: "adminprofile",
+        element: <AdminProfile />,
       },
       {
-        path:"allmeals",
-        element:<AllMeals />
+        path: "allmeals",
+        element: <AllMeals />,
       },
       {
-        path:"allreviews",
-        element:<AllReviews />
+        path: "allreviews",
+        element: <AllReviews />,
       },
 
       {
-        path:"manageusers",
-        element:<ManageUsers />
+        path: "manageusers",
+        element: <ManageUsers />,
       },
       {
-        path:"servemeals",
-        element:<ServeMeals />
+        path: "servemeals",
+        element: <ServeMeals />,
       },
       {
-        path:"upcomingmeals",
-        element:<UpcomingMeals />
+        path: "upcomingmeals",
+        element: <UpcomingMeals />,
       },
       // user related navbar
       {
-        path:'myprofile',
-        element:<MyProfile />,
+        path: "myprofile",
+        element: <MyProfile />,
       },
       {
-        path:'requestedMeals',
-        element:<RequestedMeals />,
+        path: "requestedMeals",
+        element: <RequestedMeals />,
       },
       {
-        path:'myreview',
-        element:<MyReviews />,
+        path: "myreview",
+        element: <MyReviews />,
       },
       {
-        path:'paymenthistory',
-        element:<PaymentHistory />,
+        path: "paymenthistory",
+        element: <PaymentHistory />,
       },
       {
-        path:'updateItem/:id',
-        element:<UpdateItem />,
-        loader:({params}) => fetch(`http://localhost:8000/meal-one-get/${params.id}`)
-      }
-    ]
+        path: "updateItem/:id",
+        element: <UpdateItem />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:8000/meal-one-get/${params.id}`),
+      },
+    ],
   },
   {
-    path:'/meal/:id',
-    element:<MealDetails />,
-    
+    path: "/meal/:id",
+    element: <MealDetails />,
   },
   {
-    path:'/silver/:id',
-    element:<Silver_package />
+    path: "/silver/:id",
+    element: <Silver_package />,
   },
   {
-    path:'/platinum/:id',
-    element:<Platinum_package />
+    path: "/platinum/:id",
+    element: <Platinum_package />,
   },
   {
-    path:'/gold/:id',
-    element:<Gold />
+    path: "/gold/:id",
+    element: <Gold />,
   },
   // {
   //   path:'/review/:id',
   //   element:<PostReview />
   // }
   {
-    path:'/addreview/:id',
-    element:<PostReview />
+    path: "/addreview/:id",
+    element: <PostReview />,
   },
   {
-    path:'payment',
-    element:<Payment />
-  }
-
-
-])
+    path: "payment",
+    element: <Payment />,
+  },
+]);

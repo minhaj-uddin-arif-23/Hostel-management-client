@@ -71,6 +71,7 @@ function AuthProvider({ children }) {
           badge: "bronze",
           // status:
         });
+      
         const userInfo = { email: currentUser?.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data?.token) {

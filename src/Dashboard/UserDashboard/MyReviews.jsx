@@ -3,8 +3,10 @@ import React from "react";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useAuth from "../../Hook/useAuth";
 import Loading from "../../components/Loading";
+import { Link, useParams } from "react-router-dom";
 
 export default function MyReviews() {
+  const {id} = useParams()
   const { user } = useAuth();
   const axiosSequre = useAxiosSecure();
   const { data: myreview = [], isLoading } = useQuery({
@@ -41,7 +43,9 @@ export default function MyReviews() {
                     <td>{}</td>
                     <td><button className="btn btn-sm btn-outline">Edit</button></td>
                     <td><button className="btn btn-sm btn-error">Delete</button></td>
-                    <td><button className="btn btn-sm btn-outline">view meal</button></td>
+                    <td><Link
+                      // to={`/meal/${_id}`}
+                    className="btn btn-sm btn-outline">view meal</Link></td>
                   </tr>
                 </>
               ))}

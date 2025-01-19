@@ -100,7 +100,7 @@ export default function Footer() {
           <aside>
             {/* <GrRestaurant className=" text-5xl" /> */}
             <p className="font-bold">
-              ArifFoodi Industries Ltd.
+              Hostel Grub Industries Ltd.
               <br />
               Providing reliable tech since 2024
             </p>

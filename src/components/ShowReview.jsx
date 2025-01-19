@@ -6,7 +6,7 @@ function ShowReview({reviews}) {
   // console.log(review)
   
   return (
-    <div>
+    <div className="my-20">
       <div>
         {/* Total review  {reviews.length} */}
       </div>
