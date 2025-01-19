@@ -24,6 +24,7 @@ import Gold from "../Package/Gold";
 import Meals from "../meal/Meals";
 import PostReview from "../components/PostReview";
 import Payment from "../Dashboard/UserDashboard/Payment";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +55,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <All_Dashboards_ />,
+    element: (
+      <PrivateRouter>
+        <All_Dashboards_ />
+      </PrivateRouter>
+    ),
     children: [
       {
         path: "addmeals",

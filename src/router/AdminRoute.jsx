@@ -1,11 +1,11 @@
-import React from 'react'
-import useAuth from '../Hook/useAuth';
-import useAdmin from '../Hook/useAdmin';
-import { useLocation } from 'react-router-dom';
+import React from "react";
+import useAuth from "../Hook/useAuth";
+import useAdmin from "../Hook/useAdmin";
+import { useLocation } from "react-router-dom";
 
-function AdminRoute({children}) {
+function AdminRoute({ children }) {
   const { user, loading } = useAuth();
-  const [isAdmin,isAdminPending] = useAdmin()
+  const [isAdmin, isAdminPending] = useAdmin();
   const location = useLocation();
   if (loading || isAdminPending) {
     return (
@@ -13,11 +13,7 @@ function AdminRoute({children}) {
     );
   }
   if (user && isAdmin) return children;
-  return (
-    <Navigate to={`/login`} state={{ from: location }} replace></Navigate>
-  );
+  return <Navigate to={`/login`} state={{ from: location }} replace></Navigate>;
 }
- 
 
-
-export default AdminRoute
+export default AdminRoute;
