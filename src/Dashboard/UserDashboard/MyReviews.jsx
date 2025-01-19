@@ -6,6 +6,7 @@ import Loading from "../../components/Loading";
 import { Link, useParams } from "react-router-dom";
 
 export default function MyReviews() {
+  // TODO :  Add Edit and Delete functionality incomplete
   const {id} = useParams()
   const { user } = useAuth();
   const axiosSequre = useAxiosSecure();
@@ -18,7 +19,7 @@ export default function MyReviews() {
     },
   });
   if (isLoading) <Loading />;
-  console.log("my review is",myreview);
+  // console.log("my review is",myreview);
   return (
     <div>
       <h1> MyReviews : {myreview.length}</h1>
@@ -44,7 +45,7 @@ export default function MyReviews() {
                     <td><button className="btn btn-sm btn-outline">Edit</button></td>
                     <td><button className="btn btn-sm btn-error">Delete</button></td>
                     <td><Link
-                      to={`/meal/${_id}`}
+                      to={`/meal/${item.meal_id}`}
                     className="btn btn-sm btn-outline">view meal</Link></td>
                   </tr>
                 </>

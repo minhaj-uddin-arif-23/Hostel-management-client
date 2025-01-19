@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hook/useAdmin";
 
 export default function DashboardNavbar() {
-  const isAdmin = true
+  const [isAdmin] = useAdmin()
   return (
     <div className=" flex w-11/12 mx-auto mt-1 ">
       <div className=" w-64 bg-green-300 min-h-screen p-14 space-y-">
