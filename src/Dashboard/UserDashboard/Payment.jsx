@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Checkout from "./Checkout";
-export default function Payment() {
-  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK_KEY);
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK_KEY);
+export default function Payment({ plan, price }) {
 
   return (
-    <div className="flex  gap-10 ">
-      <div className="text-center">
-        <h1 className="text-xl font-semibold">Please Pay Money </h1>
-        <p className="font-bold text-3xl text-yellow-300 my-3">Payment</p>
-      </div>
-      <div className="mt-48">
-        <Elements stripe={stripePromise}>
-          <Checkout />
-        </Elements>
-      </div>
+    <div className="flex flex-col gap-10 text-center">
+      <h1 className="text-xl font-semibold">Please Pay for the {plan}</h1>
+      <p className="font-bold text-3xl text-yellow-500 my-3">
+        Total: ${price}
+      </p>
+      <Elements stripe={stripePromise}>
+        <Checkout price={price} plan={plan} />
+      </Elements>
     </div>
   );
 }

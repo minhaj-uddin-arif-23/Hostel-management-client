@@ -1,64 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-// import useCart from "../Hook/useCart";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useAuth from "../../Hook/useAuth";
 
-function Checkout() {
-
-  // * -----------------------------------------------
-
-  const { user } = useAuth(); // get the user email & name
-  const [error, setError] = useState(); // if any error found throw some error in yi
-  const [transaction, setTransactions] = useState(""); // user transaction id  when payment done
-  const axiosSequre = useAxiosSecure()
-  const stripe = useStripe();
+function Checkout({ price, plan }) {
+  const { user } = useAuth();
+  const [error, setError] = useState("");
+  const [transaction, setTransaction] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const stripe = useStripe();
   const elements = useElements();
-  // const cart = useCart(); // cart all item price is here
-  // const totalPrice = cart.reduce((total, item) => total + item.price, 0);
- 
-  // *  -------------------------------------------------
-
+  const axiosSecure = useAxiosSecure();
+  // console.log('price ',price)
   useEffect(() => {
-     
-      axiosSequre
-        .post("/create-payment-intent", )
-        .then((res) => {
-          console.log(res.data.clientSecret);
-          setClientSecret(res.data.clientSecret);
-        });
-    
-  }, [axiosSequre]);
+    // Fetch the client secret from the backend
+    axiosSecure
+      .post("/create-payment-intent", { price }) // Send price dynamically
+      .then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
+  }, [price, axiosSecure]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // get card information 
-    if (!stripe || !elements) {
-      return;
-    }
+
+    if (!stripe || !elements) return;
+
     const card = elements.getElement(CardElement);
-    if (card === null) {
-      return;
-    }
+    if (!card) return;
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
+      billing_details: {
+        email: user?.email || "anonymous",
+        name: user?.displayName || "anonymous",
+      },
     });
-      // ? ----------------------------------------------------------- E R R O R ------------------------------- 
 
     if (error) {
-      console.log("Payment method error found", error);
-      setError(error?.message);
-    } else {
-      console.log("Payment successfull", paymentMethod);
-      setError();
+      setError(error.message);
+      return;
     }
-    // ? ---------------------------------------------------------- confirm payment ---------------------------
-    const { paymentIntent, error: confirmError } =
-      await stripe.confirmCardPayment(clientSecret, {
+
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+      clientSecret,
+      {
         payment_method: {
           card: card,
           billing_details: {
@@ -66,28 +53,29 @@ function Checkout() {
             name: user?.displayName || "anonymous",
           },
         },
-      });
-    if (confirmError) {
-      console.log("Confirm erro");
-    } else {
-      console.log("PaymentIntent", paymentIntent);
-      if (paymentIntent.status === "succeeded") {
-        console.log("transaction id", paymentIntent.id);
-        setTransactions(paymentIntent.id);
-        // now save the payment ,payment history in database in each user & card
-        const paymentInfo = {
-          email: user?.email,
-          price: totalPrice,
-          TransactionId: paymentIntent.id,
-          date: new Date(), // utc date convert use moment js
-          // cartIds: cart.map((item) => item._id),
-          // menuId: cart.map((item) => item.menuId),
-          status: "pending",
-        };
-        const res = axiosSequre.post("/payments", paymentInfo).then((res) => {
-          console.log(res.data);
-        });
       }
+    );
+
+    if (confirmError) {
+      setError(confirmError.message);
+      return;
+    }
+
+    if (paymentIntent.status === "succeeded") {
+      setTransaction(paymentIntent.id);
+
+      const paymentInfo = {
+        email: user?.email,
+        price,
+        plan,
+        transactionId: paymentIntent.id,
+        date: new Date(),
+      };
+
+      // Save payment to the database
+      axiosSecure.post("/payment", paymentInfo).then((res) => {
+        console.log("Payment saved:", res.data);
+      });
     }
   };
 
@@ -110,16 +98,18 @@ function Checkout() {
         }}
       />
       <button
-        className="mt-4 btn btn-warning"
         type="submit"
         disabled={!stripe || !clientSecret}
+        className="btn btn-warning mt-4"
       >
-        Payment
+        Pay ${price}
       </button>
-      <p>{error}</p>
-  { 
-      transaction && (<p className="text-green-400">Your transaction id is: {transaction}</p>)
-  }
+      {error && <p className="text-red-500">{error}</p>}
+      {transaction && (
+        <p className="text-green-500">
+          Payment Successful! Transaction ID: {transaction}
+        </p>
+      )}
     </form>
   );
 }

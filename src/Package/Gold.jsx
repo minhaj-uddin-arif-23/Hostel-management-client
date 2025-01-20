@@ -1,9 +1,11 @@
 import React from 'react'
+import Payment from '../Dashboard/UserDashboard/Payment'
 
 export default function Gold() {
   return (
-    <div className='grid grid-cols-12'>
-      <div className='grid col-span-8 ml-10 p-7 mt-10 bg-gray-50 rounded-lg shadow-md'>
+    <div className='w-11/12 mx-auto'>
+          <div className='grid grid-cols-12'>
+      <div className='grid col-span-6 ml-10 p-7 mt-10 bg-gray-50 rounded-lg shadow-md'>
   <h1 className='text-3xl font-bold text-gray-800 mb-4'>Gold Package</h1>
   <p className='text-lg text-gray-600 mb-4'>
     The Gold Package is a perfect balance of premium features and affordability, catering to individuals who value comfort and quality. It’s an ideal choice for professionals and students seeking advanced amenities without stretching their budget.
@@ -28,9 +30,10 @@ export default function Gold() {
   </p>
 </div>
 
-      <div className='grid col-span-4'>
-
+      <div className= ' ml-10 grid col-span-6'>
+          <Payment plan="Gold Package" price={100} />
       </div>
+    </div>
     </div>
   )
 }

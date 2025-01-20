@@ -25,7 +25,7 @@ function Home() {
       {/* promotional */}
       <Upgrating />
       
-      <ContactForm />
+      {/* <ContactForm /> */}
       <Card />
       <FAQ />
       {/* reviews */}

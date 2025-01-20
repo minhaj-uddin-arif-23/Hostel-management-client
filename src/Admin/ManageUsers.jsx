@@ -12,14 +12,16 @@ function ManageUsers() {
     const itemPerPage = 10
     const axiosSequre = useAxiosSecure();
     const { data: users = [], isLoading, refetch } = useQuery({
-        queryKey: ["users",currentPage],
+        queryKey: ["users",currentPage,search],
         queryFn: async () => {
-            const { data } = await axiosSequre.get(`/allUsers?page=${currentPage}&size=${itemPerPage}`);
+            const { data } = await axiosSequre.get(`/allUsers?search=${search}&page=${currentPage}&size=${itemPerPage}`);
             return data;
         },
     });
+    // console.log("search value is --> ",search)
 
-    if (isLoading) return <Loading />;
+    // if (isLoading) return ;
+
     const totalPage = Math.ceil(100/itemPerPage)
     const pages = [...Array(totalPage).keys()]
     // console.log('manage user page',pages)
@@ -72,7 +74,6 @@ function ManageUsers() {
             }
         });
     };
-
     return (
         <div className="p-6 space-y-6">
         {/* Search and User Count Section */}
@@ -87,7 +88,9 @@ function ManageUsers() {
             Manage Users: {users.length}
           </div>
         </div>
-      
+      {
+        isLoading && <Loading />
+      }
         {/* Table Section */}
         <div className="overflow-x-auto rounded-lg shadow-md bg-white">
           <table className="table table-striped">
@@ -143,6 +146,11 @@ function ManageUsers() {
           </table>
         </div>
       
+
+
+
+
+
         {/* Pagination Section */}
         <div className="mt-6 flex items-center justify-center">
           {pages.map((number) => (
