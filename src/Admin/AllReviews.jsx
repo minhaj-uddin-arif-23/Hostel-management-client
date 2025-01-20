@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../components/Loading";
@@ -7,19 +7,24 @@ import { Link } from "react-router-dom";
 
 function AllReviews() {
   const axiosSequre = useAxiosSecure();
+    const [currentPage,setCurrentPage] = useState(0);
+      const itemPerPage = 10
   const {
     data: allreviews = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["allreviews"],
+    queryKey: ["allreviews",currentPage],
     queryFn: async () => {
-      const { data } = await axiosSequre.get("/allreviews");
+      const { data } = await axiosSequre.get(`/allreviews?page=${currentPage}&size=${itemPerPage}`);
       return data;
     },
   });
   // console.log(allreviews);
   if (isLoading) <Loading />;
+
+  const totalPage = Math.ceil(100/itemPerPage)
+  const pages = [...Array(totalPage).keys()]
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -93,6 +98,21 @@ function AllReviews() {
             </tbody>
           </table>
         </div>
+           {/* pagination */}
+
+           <div className="mt-10 flex items-center justify-center">
+            {
+                pages.map((number)=>(
+                    <button
+                    key={number}
+                    className={`btn btn-sm ${currentPage === number ? 'btn-primary':'btn-outline' } mx-1`}
+                    onClick={()=>setCurrentPage(number)}
+                    >
+            {number + 1}
+                    </button>
+                ))
+            }
+            </div>
       </div>
     </div>
   );

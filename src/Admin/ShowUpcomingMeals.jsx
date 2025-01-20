@@ -1,16 +1,18 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useState } from 'react'
 import useAxiosSecure from '../Hook/useAxiosSecure'
 
 export default function ShowUpcomingMeals() {
   const axiosSequre = useAxiosSecure()
+    const [currentPage,setCurrentPage] = useState(0);
+        const itemPerPage = 5
   const {data: showallMeal=[]} = useQuery({
-    queryKey:['showallMeal'],
+    queryKey:['showallMeal',currentPage],
     queryFn:async () =>{
-      const {data} =await axiosSequre.get('/upcoming-meal-show')
+      const {data} =await axiosSequre.get(`/upcoming-meal-show?page=${currentPage}&size=${itemPerPage}`)
       return data
     }
   })
 
-  return [showallMeal]
+  return [showallMeal,currentPage,setCurrentPage,itemPerPage]
 }

@@ -7,7 +7,8 @@ import Loading from "../components/Loading";
 import ShowUpcomingMeals from "./ShowUpcomingMeals";
 
 export default function UpcomingMeals() {
-  const [showallMeal] = ShowUpcomingMeals();
+
+  const [showallMeal,currentPage,setCurrentPage,itemPerPage] = ShowUpcomingMeals();
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient(); // For invalidating and refetching queries
 
@@ -69,6 +70,8 @@ export default function UpcomingMeals() {
 
   // If loading, show loading spinner
   if (isLoading) return <Loading />;
+  const totalPage = Math.ceil(100 / itemPerPage);
+  const pages = [...Array(totalPage).keys()];
 
   return (
     <div>
@@ -80,7 +83,7 @@ export default function UpcomingMeals() {
           Add Upcoming Meal
         </button>
 
-        {/* Modal */}
+        {/* Modal */}    
         {isModalOpen && (
           <div className="modal modal-open">
             <div className="modal-box">
@@ -155,6 +158,22 @@ export default function UpcomingMeals() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div>
+          {/* pagination */}
+          <div className="mt-10 flex items-center justify-center">
+          {pages.map((number) => (
+            <button
+              key={number}
+              className={`btn btn-sm ${
+                currentPage === number ? "btn-primary" : "btn-outline"
+              } mx-1`}
+              onClick={() => setCurrentPage(number)}
+            >
+              {number + 1}
+            </button>
+          ))}
+        </div>
         </div>
       </div>
     </div>

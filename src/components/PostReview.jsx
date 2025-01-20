@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import useAxiosPublic from "../Hook/useAxiosPublic";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 // import NavbarExtra from "../Components/NavbarExtra";
 export default function PostReview() {
   const { user } = useAuth();
@@ -21,6 +22,7 @@ export default function PostReview() {
   const location = useLocation();
   const { title } = location.state || {};
   const axiosPublic = useAxiosPublic();
+  const axiosSequre = useAxiosSecure()
   const addToReview = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -41,7 +43,7 @@ export default function PostReview() {
     };
 
     try {
-      await axiosPublic.post(`/add-review`, review);
+      await axiosSequre.post(`/add-review`, review);
       toast.success("Thanks to your valuable feedback!!");
       navigate("/");
     } catch (err) {

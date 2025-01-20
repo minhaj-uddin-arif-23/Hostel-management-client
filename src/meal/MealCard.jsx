@@ -8,7 +8,7 @@ export default function MealCard({items}) {
   return (
     <div>
       <div>
-      <div className="card card-compact bg-base-100 w-80 shadow-xl">
+      <div className="card card-compact bg-base-100 w-72 shadow-xl">
   <figure>
     <img
       src={image}

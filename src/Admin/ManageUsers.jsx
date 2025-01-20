@@ -8,19 +8,24 @@ import Loading from "../components/Loading";
 
 function ManageUsers() {
     const [search, setSearch] = useState("");
+    const [currentPage,setCurrentPage] = useState(0);
+    const itemPerPage = 10
     const axiosSequre = useAxiosSecure();
     const { data: users = [], isLoading, refetch } = useQuery({
-        queryKey: ["users"],
+        queryKey: ["users",currentPage],
         queryFn: async () => {
-            const { data } = await axiosSequre.get("/allUsers");
+            const { data } = await axiosSequre.get(`/allUsers?page=${currentPage}&size=${itemPerPage}`);
             return data;
         },
     });
 
     if (isLoading) return <Loading />;
+    const totalPage = Math.ceil(100/itemPerPage)
+    const pages = [...Array(totalPage).keys()]
+    // console.log('manage user page',pages)
 
     const handleMakeAdmin = (id) => {
-        axiosSequre.patch(`/user/admin/${id}`).then((res) => {
+        axiosSequre.patch(`/user/admine/${id}`).then((res) => {
             if (res.data.modifiedCount > 0) {
                 refetch();
                 toast.success(`User is now an Admin`);
@@ -135,6 +140,24 @@ function ManageUsers() {
                         ))}
                     </tbody>
                 </table>
+
+            </div>
+
+
+            {/* pagination */}
+
+            <div className="mt-10 flex items-center justify-center">
+            {
+                pages.map((number)=>(
+                    <button
+                    key={number}
+                    className={`btn btn-sm ${currentPage === number ? 'btn-primary':'btn-outline' } mx-1`}
+                    onClick={()=>setCurrentPage(number)}
+                    >
+            {number + 1}
+                    </button>
+                ))
+            }
             </div>
         </div>
     );

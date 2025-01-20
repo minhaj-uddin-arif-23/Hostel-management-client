@@ -8,9 +8,7 @@ function AdminRoute({ children }) {
   const [isAdmin, isAdminPending] = useAdmin();
   const location = useLocation();
   if (loading || isAdminPending) {
-    return (
-      <span className="loading loading-dots loading-lg min-h-screen my-20"></span>
-    );
+    return <span className="loading loading-dots loading-lg min-h-screen my-20"></span> 
   }
   if (user && isAdmin) return children;
   return <Navigate to={`/login`} state={{ from: location }} replace></Navigate>;

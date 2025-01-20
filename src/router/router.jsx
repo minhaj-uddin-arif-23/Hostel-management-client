@@ -25,6 +25,7 @@ import Meals from "../meal/Meals";
 import PostReview from "../components/PostReview";
 import Payment from "../Dashboard/UserDashboard/Payment";
 import PrivateRouter from "./PrivateRouter";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -63,49 +64,95 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "addmeals",
-        element: <AddMeal />,
+        element: (
+          <AdminRoute>
+            <AddMeal />
+          </AdminRoute>
+        ),
       },
       {
         path: "adminprofile",
-        element: <AdminProfile />,
+        element: (
+          <AdminRoute>
+            <AdminProfile />
+          </AdminRoute>
+        ),
       },
       {
         path: "allmeals",
-        element: <AllMeals />,
+        element: (
+          <AdminRoute>
+            <AllMeals />
+          </AdminRoute>
+        ),
       },
       {
         path: "allreviews",
-        element: <AllReviews />,
+        element: (
+          <AdminRoute>
+            <AllReviews />
+          </AdminRoute>
+        ),
       },
 
       {
         path: "manageusers",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "servemeals",
-        element: <ServeMeals />,
+        element: (
+          <AdminRoute>
+            <ServeMeals />
+          </AdminRoute>
+        ),
       },
       {
         path: "upcomingmeals",
-        element: <UpcomingMeals />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <UpcomingMeals />
+          </AdminRoute>
+        ),
       },
-      // user related navbar
+      // * user related navbar
       {
         path: "myprofile",
-        element: <MyProfile />,
+        element: (
+          <PrivateRouter>
+            <MyProfile />
+          </PrivateRouter>
+        ),
       },
       {
         path: "requestedMeals",
-        element: <RequestedMeals />,
+        element: (
+          <PrivateRouter>
+            <RequestedMeals />
+          </PrivateRouter>
+        ),
       },
       {
         path: "myreview",
-        element: <MyReviews />,
+        element: (
+          <PrivateRouter>
+            <MyReviews />
+          </PrivateRouter>
+        ),
       },
       {
         path: "paymenthistory",
-        element: <PaymentHistory />,
+        element: (
+          <PrivateRouter>
+            <PaymentHistory />
+          </PrivateRouter>
+        ),
       },
       {
         path: "updateItem/:id",
