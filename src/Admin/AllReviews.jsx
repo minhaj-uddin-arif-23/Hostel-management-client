@@ -54,67 +54,67 @@ function AllReviews() {
 
   return (
     <div>
-      <div>AllReviews :{allreviews.length}</div>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Like</th>
-                <th>review</th>
-                <th>actions</th>
-                <th>view meal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allreviews?.map((review) => (
-                <>
-                  <tr className="bg-base-200">
-                    <th>{review.text}</th>
-                    <th>{review.like}</th>
-                    <td>{review.rating}</td>
-                    <td>
-                      {" "}
-                      <button
-                        onClick={() => handleDelete(review._id)}
-                        className="btn btn-sm btn-error text-white"
-                      >
-                        Delete
-                      </button>{" "}
-                    </td>
-                    <td>
-                      <Link to={`/meal/${review.meal_id}`}
-                        className="btn btn-sm btn-success text-white
-                   "
-                      >
-                        View Meal
-                      </Link>
-                    </td>
-                  </tr>
-                </>
-              ))}
-            </tbody>
-          </table>
-        </div>
-           {/* pagination */}
-
-           <div className="mt-10 flex items-center justify-center">
-            {
-                pages.map((number)=>(
-                    <button
-                    key={number}
-                    className={`btn btn-sm ${currentPage === number ? 'btn-primary':'btn-outline' } mx-1`}
-                    onClick={()=>setCurrentPage(number)}
-                    >
-            {number + 1}
-                    </button>
-                ))
-            }
-            </div>
-      </div>
+  <div>All Reviews: {allreviews.length}</div>
+  <div>
+    <div className="overflow-x-auto">
+      <table className="table">
+        {/* Table Header */}
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Like</th>
+            <th>Review</th>
+            <th>Actions</th>
+            <th>View Meal</th>
+          </tr>
+        </thead>
+        {/* Table Body */}
+        <tbody>
+          {allreviews?.map((review) => (
+            <tr key={review._id} className="bg-base-200">
+              <td>{review.text}</td>
+              <td>{review.like}</td>
+              <td>{review.rating}</td>
+              <td>
+                <button
+                  onClick={() => handleDelete(review._id)}
+                  className="btn btn-sm btn-error text-white"
+                >
+                  Delete
+                </button>
+              </td>
+              <td>
+                <Link
+                  to={`/meal/${review.meal_id}`}
+                  className="btn btn-sm btn-success text-white"
+                >
+                  View Meal
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+
+    {/* Pagination Section */}
+    <div className="mt-10 flex items-center justify-center">
+      {pages.map((number) => (
+        <button
+          key={number}
+          className={`btn btn-sm ${
+            currentPage === number ? "btn-primary" : "btn-outline"
+          } mx-1`}
+          onClick={() => setCurrentPage(number)}
+        >
+          {number + 1}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+  
   );
 }
 

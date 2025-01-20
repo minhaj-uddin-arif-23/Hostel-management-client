@@ -1,14 +1,12 @@
 import React from 'react';
-import one from '../assets/one.jpg';
+import one from '../assets/benefitse.jpg';
 
 export default function Benefitslider() {
   return (
     <div className="my-12">
       <div
-        className="hero min-h-screen "
-        style={{
-          background: 'linear-gradient(to right, #e3f2fd, #ffffff)',
-        }}
+        className="hero min-h-screen p-4 border rounded-lg hover:shadow-lg transition-shadow "
+       
       >
         <div className="hero-content flex-col lg:flex-row">
           {/* Image Section */}

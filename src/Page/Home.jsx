@@ -7,6 +7,7 @@ import MealTab from "../meal/MealTab";
 import Upgrating from "../components/Upgrating";
 import Benefitslider from "../Sliders/Benefitslider";
 import MobileSlider from "../Sliders/MobileSlider";
+import Card from "../components/Card";
 
 function Home() {
   return (
@@ -23,7 +24,9 @@ function Home() {
       {/* offer section */}
       {/* promotional */}
       <Upgrating />
+      
       <ContactForm />
+      <Card />
       <FAQ />
       {/* reviews */}
     </div>

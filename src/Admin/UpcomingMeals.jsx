@@ -74,108 +74,113 @@ export default function UpcomingMeals() {
   const pages = [...Array(totalPage).keys()];
 
   return (
-    <div>
-      <div>
-        <button
-          onClick={handleOpenModal}
-          className="btn btn-success text-white"
-        >
-          Add Upcoming Meal
-        </button>
-
-        {/* Modal */}    
-        {isModalOpen && (
-          <div className="modal modal-open">
-            <div className="modal-box">
-              <h3 className="font-bold text-lg">Add Upcoming Meal</h3>
-              <AddMealForm
-                closeModal={handleCloseModal}
-                onAddMeal={handleAddMeal}
-              />
-              <div className="modal-action">
-                <button
-                  className="btn btn-error text-white"
-                  onClick={handleCloseModal}
-                >
-                  Close
-                </button>
-              </div>
+    <div className="max-w-6xl mx-auto p-6">
+    {/* Add Upcoming Meal Button */}
+    <div className="flex justify-between items-center mb-6 flex-col md:flex-row">
+      <button
+        onClick={handleOpenModal}
+        className="btn btn-success text-white px-6 py-3 rounded-md shadow-lg w-full md:w-auto"
+      >
+        Add Upcoming Meal
+      </button>
+  
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg mb-4">Add Upcoming Meal</h3>
+            <AddMealForm
+              closeModal={handleCloseModal}
+              onAddMeal={handleAddMeal}
+            />
+            <div className="modal-action">
+              <button
+                className="btn btn-error text-white"
+                onClick={handleCloseModal}
+              >
+                Close
+              </button>
             </div>
           </div>
-        )}
-      </div>
-
-      {/* Display Upcoming Meals */}
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-4">Upcoming Meals</h2>
-        <ul>
-          {upcomingMeals?.map((meal, index) => (
-            <li key={index} className="border p-4 mb-2 rounded">
-              <h3 className="text-lg font-bold">{meal.title}</h3>
-              <p>Category: {meal.category}</p>
-              <p>Price: ${meal.price}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Show table-wise data */}
-      <div>Total upcoming meals: {showallMeal.length}</div>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* Table head */}
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Ingredients</th>
-                <th>Description</th>
-                <th>Actions</th>
+        </div>
+      )}
+    </div>
+  
+    {/* Display Upcoming Meals */}
+    <div className="mt-8">
+      <h2 className="text-xl font-semibold mb-4">Upcoming Meals</h2>
+      <ul className="space-y-4">
+        {upcomingMeals?.map((meal, index) => (
+          <li
+            key={index}
+            className="border border-gray-300 p-4 rounded-lg shadow-md"
+          >
+            <h3 className="text-lg font-bold text-gray-700">{meal.title}</h3>
+            <p className="text-sm text-gray-600">Category: {meal.category}</p>
+            <p className="text-sm text-gray-600">Price: ${meal.price}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  
+    {/* Show Table Data */}
+    <div className="mt-8">
+      <div className="text-lg font-semibold mb-4">Total upcoming meals: {showallMeal.length}</div>
+      <div className="overflow-x-auto rounded-lg shadow-md">
+        <table className="table table-zebra w-full">
+          {/* Table Header */}
+          <thead className="bg-gray-100">
+            <tr className="text-sm font-semibold text-gray-600">
+              <th>Title</th>
+              <th>Category</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Ingredients</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          {/* Table Body */}
+          <tbody>
+            {showallMeal?.map((meal) => (
+              <tr key={meal.id} className="hover:bg-gray-50">
+                <td className="px-4 py-3 text-sm text-gray-700">{meal.title}</td>
+                <td className="px-4 py-3 text-sm text-gray-700">{meal.category}</td>
+                <td className="px-4 py-3">
+                  <img src={meal.image} className="rounded-md w-20" alt="" />
+                </td>
+                <td className="px-4 py-3 text-sm text-gray-700">${meal.price}</td>
+                <td className="px-4 py-3 text-sm text-gray-700">{meal.Ingredients}</td>
+                <td className="px-4 py-3 text-sm text-gray-700">{meal.Description}</td>
+                <td className="px-4 py-3">
+                  <button
+                    onClick={() => publishMealMutation.mutate(meal)}
+                    className="btn btn-sm btn-success text-white"
+                  >
+                    Publish Meal
+                  </button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {showallMeal?.map((meal) => (
-                <tr key={meal.id}>
-                  <td>{meal.title}</td>
-                  <td>{meal.category}</td>
-                  <td>
-                    <img src={meal.image} className="rounded-md w-20" alt="" />
-                  </td>
-                  <td>{meal.price}</td>
-                  <td>{meal.Ingredients}</td>
-                  <td>{meal.Description}</td>
-                  <td>
-                    <button 
-                     onClick={() => publishMealMutation.mutate(meal)}
-                    className="btn btn-sm btn-success text-white">
-                      Publish Meal
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          {/* pagination */}
-          <div className="mt-10 flex items-center justify-center">
-          {pages.map((number) => (
-            <button
-              key={number}
-              className={`btn btn-sm ${
-                currentPage === number ? "btn-primary" : "btn-outline"
-              } mx-1`}
-              onClick={() => setCurrentPage(number)}
-            >
-              {number + 1}
-            </button>
-          ))}
-        </div>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
+  
+    {/* Pagination Section */}
+    <div className="mt-10 flex justify-center space-x-2">
+      {pages.map((number) => (
+        <button
+          key={number}
+          className={`btn btn-sm ${currentPage === number ? "btn-primary" : "btn-outline"} mx-1`}
+          onClick={() => setCurrentPage(number)}
+        >
+          {number + 1}
+        </button>
+      ))}
+    </div>
+  </div>
+  
+  
   );
 }

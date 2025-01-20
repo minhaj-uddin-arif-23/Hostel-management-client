@@ -3,7 +3,7 @@ import mobile from '../assets/mobile.jpg';
 
 export default function MobileSlider() {
   return (
-    <div className="bg-gray-50 py-12 my-14">
+    <div className="p-4 border rounded-lg hover:shadow-lg transition-shadow py-12 my-14">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Text Section */}
         <div className="space-y-6 px-6 lg:px-12">
@@ -118,7 +118,7 @@ export default function MobileSlider() {
         <div className="flex justify-center">
           <img
             src={mobile}
-            className="max-w-full rounded-lg shadow-xl"
+            className="max-w-full rounded-"
             alt="Mobile App Preview"
           />
         </div>

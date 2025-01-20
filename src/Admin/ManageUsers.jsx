@@ -74,92 +74,91 @@ function ManageUsers() {
     };
 
     return (
-        <div>
-            <div className="flex justify-between">
-                <input
-                    onChange={(e) => setSearch(e.target.value)}
-                    type="text"
-                    placeholder="Type name & email"
-                    className="input input-bordered input-info w-full max-w-lg"
-                />
-                <div className="border-2 border-gray-600 px-8 py-2 rounded-md">
-                    Manage Users: {users.length}
-                </div>
-            </div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Badge</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user._id}>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                    {user.role === "admin" ? (
-                                        "Admin"
-                                    ) : (
-                                        <button
-                                            onClick={() => handleMakeAdmin(user._id)}
-                                            className="btn btn-success text-white text-lg btn-sm"
-                                        >
-                                            <FaUsers />
-                                        </button>
-                                    )}
-                                </td>
-                                <td>
-                                    <select
-                                        className="select select-accent w-full max-w-xs"
-                                        defaultValue={user.badge}
-                                        onChange={(e) =>
-                                            handleBadgeChange(user.email, e.target.value)
-                                        }
-                                    >
-                                        <option value="Bronze">Bronze</option>
-                                        <option value="Silver">Silver</option>
-                                        <option value="Gold">Gold</option>
-                                        <option value="Platinum">Platinum</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <button
-                                        onClick={() => handleDelete(user._id)}
-                                        className="btn btn-error text-white"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-
-            </div>
-
-
-            {/* pagination */}
-
-            <div className="mt-10 flex items-center justify-center">
-            {
-                pages.map((number)=>(
-                    <button
-                    key={number}
-                    className={`btn btn-sm ${currentPage === number ? 'btn-primary':'btn-outline' } mx-1`}
-                    onClick={()=>setCurrentPage(number)}
-                    >
-            {number + 1}
-                    </button>
-                ))
-            }
-            </div>
+        <div className="p-6 space-y-6">
+        {/* Search and User Count Section */}
+        <div className="flex justify-between items-center">
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            placeholder="Search by Name & Email"
+            className="input input-bordered input-info w-full max-w-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div className="border-2 border-gray-600 px-8 py-2 rounded-md font-semibold text-lg text-gray-700">
+            Manage Users: {users.length}
+          </div>
         </div>
+      
+        {/* Table Section */}
+        <div className="overflow-x-auto rounded-lg shadow-md bg-white">
+          <table className="table table-striped">
+            <thead className="bg-gray-200">
+              <tr>
+                <th className="text-sm font-semibold text-gray-700">Name</th>
+                <th className="text-sm font-semibold text-gray-700">Email</th>
+                <th className="text-sm font-semibold text-gray-700">Role</th>
+                <th className="text-sm font-semibold text-gray-700">Badge</th>
+                <th className="text-sm font-semibold text-gray-700">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user._id} className="hover:bg-gray-50">
+                  <td className="text-sm text-gray-700 py-3">{user.name}</td>
+                  <td className="text-sm text-gray-700 py-3">{user.email}</td>
+                  <td className="text-sm py-3">
+                    {user.role === "admin" ? (
+                      <span className="badge badge-primary">Admin</span>
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user._id)}
+                        className="btn btn-success btn-sm text-white"
+                      >
+                        <FaUsers />
+                      </button>
+                    )}
+                  </td>
+                  <td className="py-3">
+                    <select
+                      className="select select-accent w-full max-w-xs"
+                      defaultValue={user.badge}
+                      onChange={(e) => handleBadgeChange(user.email, e.target.value)}
+                    >
+                      <option value="Bronze">Bronze</option>
+                      <option value="Silver">Silver</option>
+                      <option value="Gold">Gold</option>
+                      <option value="Platinum">Platinum</option>
+                    </select>
+                  </td>
+                  <td className="py-3">
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="btn btn-error text-white text-sm"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      
+        {/* Pagination Section */}
+        <div className="mt-6 flex items-center justify-center">
+          {pages.map((number) => (
+            <button
+              key={number}
+              className={`btn btn-sm ${
+                currentPage === number ? "btn-primary" : "btn-outline"
+              } mx-2`}
+              onClick={() => setCurrentPage(number)}
+            >
+              {number + 1}
+            </button>
+          ))}
+        </div>
+      </div>
+      
     );
 }
 
