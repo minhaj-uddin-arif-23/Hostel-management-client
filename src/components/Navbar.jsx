@@ -9,33 +9,11 @@ import { HiBadgeCheck } from "react-icons/hi";
 function Navbar() {
   const { user, signout } = useAuth();
 
-  const link = (
-    <>
-      <div className="lg:flex gap-5 font-semibold uppercase ">
-        <li>
-          <NavLink to={`/`}>Home</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/about`}>About</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/Blog`}>Blog</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/contact`}>Contact us</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/seeAll`}>See All</NavLink>
-        </li>
-      </div>
-      {/* <li><NavLink className={`/Blog`} >Blog</NavLink></li> */}
-      {/* <li><NavLink className={`/AddPost`} >Blog</NavLink></li> */}
-    </>
-  );
+
 
   return (
     <>
-      <div className="navbar ">
+      <div className="navbar px-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" lg:hidden">
@@ -80,25 +58,24 @@ function Navbar() {
                 <i class="fa-solid fa-moon"></i>
               )}
             </div> */}
-              <NavLink to={`/`} className="mt-2">
+               <NavLink to={`/`} className="mt-2">
                 Home
               </NavLink>
-              <NavLink to={`/allMovie`} className="mt-2">
-                All Movie
+              <NavLink to={`/allmeals`} className="mt-2">
+                Meals
               </NavLink>
-              <NavLink to={`/tv`} className="mt-2">
-                Tv Show
+              <NavLink to={`/upcomingmeals`} className="mt-2">
+                Upcoming Meals
+              </NavLink>
+              <NavLink to={`/room`} className="mt-2">
+                Room
               </NavLink>
               <NavLink to={`/blog`} className="mt-2">
                 Blog
               </NavLink>
-              {/* this is private route */}
-              <NavLink to={`/addMovie`} className="mt-2">
-                Add Movie
-              </NavLink>
-              <NavLink to={`/fovaurite`} className="mt-2">
-                My Favorites
-              </NavLink>
+              <p  className="mt-4 text-lg">
+                <IoMdNotifications />
+              </p>
 
               <div className="flex">
                 {user && user?.email ? (
@@ -168,16 +145,18 @@ function Navbar() {
               <NavLink to={`/allmeals`} className="mt-2">
                 Meals
               </NavLink>
-              <NavLink to={`/addMovie`} className="mt-2">
+              <NavLink to={`/upcomingmeals`} className="mt-2">
                 Upcoming Meals
               </NavLink>
-
+              <NavLink to={`/room`} className="mt-2">
+                Room
+              </NavLink>
               <NavLink to={`/blog`} className="mt-2">
-                Join Us
+                Blog
               </NavLink>
-              <NavLink to={`/tv`} className="mt-4 text-lg">
+              <p  className="mt-4 text-lg">
                 <IoMdNotifications />
-              </NavLink>
+              </p>
               {/* this is private route */}
 
               {/* <div className="icon mt-2" onClick={change}>

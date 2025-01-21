@@ -26,7 +26,7 @@ export default function AddMealForm({ closeModal }) {
     });
 
     if (res.data.success) {
-      console.log(res)
+      // console.log(res)
       const menuItem = {
         title: data.title,
         category: data.category,
@@ -47,7 +47,7 @@ export default function AddMealForm({ closeModal }) {
       if (menuRes?.data?.insertedId) {
         toast.success("Meal successfully added");
         // reset(); // Clear the form
-        console.log(menuRes?.data)
+        // console.log(menuRes?.data)
         closeModal(); // Close the modal
       } else {
         toast.error("Failed to add meal. Try again.");

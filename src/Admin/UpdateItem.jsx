@@ -32,7 +32,6 @@ export default function UpdateItem() {
     review_count,
     _id,
   } = useLoaderData();
-  // console.log("Single data to update --> ",item)
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const { register, handleSubmit,reset } = useForm();
@@ -40,7 +39,7 @@ export default function UpdateItem() {
   const axiosSequre = useAxiosSecure();
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-    // console.log(data);
+    
     const imageFile = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
@@ -62,19 +61,16 @@ export default function UpdateItem() {
         like: 0,
         review_count: 0,
       };
-      // const token = localStorage.getItem("Access-token"); // get token in local storage
+      
       const menuRes = await axiosSequre.patch(`/meal/update/${_id}`, menuItem);
 
-      console.log(menuRes);
-      // console.log(menuRes.data);
       if (menuRes?.data?.modifiedCount > 0) {
         reset()
         toast.success("Menu item added");
-        console.log(menuRes?.data?.insertedId);
         navigate("/");
       }
     }
-    // console.log(res.data);
+    
   };
 
   return (

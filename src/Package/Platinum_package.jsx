@@ -1,4 +1,5 @@
 import React from 'react'
+import Payment from '../Dashboard/UserDashboard/Payment'
 
 export default function Platinum_package() {
   return (
@@ -32,8 +33,8 @@ export default function Platinum_package() {
 
 
       </div>
-      <div className='grid col-span-6'>
-
+      <div className='ml-6 grid col-span-6 mt-10'>
+                <Payment plan="Platinum Package" price={200} />
       </div>
     </div>
     </div>

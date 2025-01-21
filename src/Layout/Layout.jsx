@@ -5,14 +5,14 @@ import Footer from '../footer/Footer'
 
 function Layout() {
   return (
-    <div className='bg-[#ffffff]'> 
-      <header className='w-11/12 mx-auto bg-[#ffffff] '>
+    <div className='w-full bg-[#ffffff]'> 
+      <header className='w-full mx-auto bg-[#fef7f7] z-50  top-0 fixed'>
         <Navbar />
       </header>
-      <div className='w-11/12 mx-auto'>
+      <div className='w-11/12 mx-auto mt-28'>
         <Outlet />
       </div>
-      <div>]
+      <div>
         <Footer />
       </div>
     </div>

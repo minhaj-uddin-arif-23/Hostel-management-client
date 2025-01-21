@@ -21,11 +21,22 @@ export default function Meals() {
   // console.log(filter)
   return (
     <div>
-      <div className="flex gap-5 w-1/2">
-      {/* category */}
-        <select
+      <div className="flex justify-between mr-20 ">
+    
+        {/* search */}
+        <div>
+        <input
+        onChange={e => setSearch(e.target.value)}
+          type="text"
+          placeholder="Type your favourite Meal"
+          className="input input-bordered input-info w-full max-w-xs"
+        />
+        </div>
+          {/* category */}
+       <div>
+       <select
           // defaultValue="default"
-          className="select select-primary w-full "
+          className="select select-primary w-full font-semibold  "
           onChange={(e)=>setFilter(e.target.value)}
         >
           <option disabled value="default">
@@ -36,13 +47,7 @@ export default function Meals() {
           <option value="Dinner">Dinner</option>
           <option value="All Meals">All Meals</option>
         </select>
-        {/* search */}
-        <input
-        onChange={e => setSearch(e.target.value)}
-          type="text"
-          placeholder="Type your favourite Meal"
-          className="input input-bordered input-info w-full max-w-xs"
-        />
+       </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 gap-7 mt-10">
         {meals?.map((item) => (

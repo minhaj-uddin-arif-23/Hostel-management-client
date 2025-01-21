@@ -6,7 +6,7 @@ export default function MealCard({items}) {
     Ingredients,
     Description,name,like,StartDate,rating,review_count,_id} = items || {}
   return (
-    <div>
+    <div className='ml-12 md:ml-0'>
       <div>
       <div className="card card-compact bg-base-100 w-72 shadow-xl">
   <figure>

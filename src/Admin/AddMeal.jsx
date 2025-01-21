@@ -49,12 +49,12 @@ export default function AddMeal() {
       // const token = localStorage.getItem("Access-token"); // get token in local storage
       const menuRes = await axiosSequre.post("/add-meal", menuItem);
 
-      console.log(menuRes);
+      // console.log(menuRes);
       // console.log(menuRes.data);
       if (menuRes?.data?.insertedId) {
         // reset()
         toast.success("Menu item added");
-        console.log(menuRes?.data?.insertedId);
+        // console.log(menuRes?.data?.insertedId);
         navigate("/");
       }
     }

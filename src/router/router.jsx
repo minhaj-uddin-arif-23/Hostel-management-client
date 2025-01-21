@@ -26,6 +26,9 @@ import PostReview from "../components/PostReview";
 import Payment from "../Dashboard/UserDashboard/Payment";
 import PrivateRouter from "./PrivateRouter";
 import AdminRoute from "./AdminRoute";
+import UpComingmeals from "../components/UpComingmeals";
+import Room from "../components/Room";
+import RoomaddForm from "../Admin/RoomaddForm";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: "allmeals",
         element: <Meals />,
+      },
+      {
+        path:'upcomingmeals',
+        element:<UpComingmeals />
+      },
+      {
+        path:'room',
+        element:<Room />
       },
       {
         path: "Blog",
@@ -116,8 +127,17 @@ export const router = createBrowserRouter([
         path: "upcomingmeals",
         element: (
           <AdminRoute>
-            {" "}
+           
             <UpcomingMeals />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "addroom",
+        element: (
+          <AdminRoute>
+           
+            <RoomaddForm />
           </AdminRoute>
         ),
       },

@@ -8,8 +8,8 @@ export default function Payment({ plan, price }) {
 
   return (
     <div className="flex flex-col gap-10 text-center">
-      <h1 className="text-xl font-semibold">Please Pay for the {plan}</h1>
-      <p className="font-bold text-3xl text-yellow-500 my-3">
+      <h1 className="text-3xl font-semibold">Please Pay for the {plan}</h1>
+      <p className="font-bold text-3xl text-yellow-600 my-3">
         Total: ${price}
       </p>
       <Elements stripe={stripePromise}>

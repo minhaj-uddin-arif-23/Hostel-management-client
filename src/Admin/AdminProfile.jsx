@@ -21,7 +21,7 @@ export default function AdminProfile() {
       return data.totalMeal
     }
   })
-  console.log('Total meal count ---> ',mealCount)
+  // console.log('Total meal count ---> ',mealCount)
 
 
   return (

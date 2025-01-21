@@ -74,7 +74,7 @@ function Checkout({ price, plan }) {
 
       // Save payment to the database
       axiosSecure.post("/payment", paymentInfo).then((res) => {
-        console.log("Payment saved:", res.data);
+        // console.log("Payment saved:", res.data);
       });
     }
   };

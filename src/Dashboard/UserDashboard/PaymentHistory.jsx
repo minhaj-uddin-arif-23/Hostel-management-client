@@ -15,7 +15,7 @@ export default function PaymentHistory() {
     }
   })
   if(isLoading) return <Loading />
-  console.log('payment history --> ',paymentHistory)
+  // console.log('payment history --> ',paymentHistory)
   return (
     <div>
       <div>

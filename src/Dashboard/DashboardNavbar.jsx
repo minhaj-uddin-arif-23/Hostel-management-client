@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaUser, FaUtensils, FaListAlt, FaTasks, FaCalendarAlt, FaStar, FaUsers, FaHome } from "react-icons/fa";
+import { MdOutlineBathroom } from "react-icons/md";
 import { MdRateReview, MdPayment } from "react-icons/md";
 import useAdmin from "../Hook/useAdmin";
 
@@ -80,9 +81,22 @@ export default function DashboardNavbar() {
                     <FaUsers className="mr-3" />
                     Manage Users
                   </NavLink>
+
+                  
+                  
+                </li>
+                <li>
+                  <NavLink
+                    to={`addroom`}
+                    className="flex items-center p-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded-md"
+                  >
+                    <MdOutlineBathroom className="mr-3" />
+                    Add Room
+                  </NavLink>
                 </li>
               </>
             ) : (
+              // user related route
               <>
                 <li>
                   <NavLink
