@@ -61,7 +61,7 @@ function AuthProvider({ children }) {
   // onAuthState hold and delele
   useEffect(() => {
     const storeUserInfo = onAuthStateChanged(auth, async (currentUser) => {
-      // 
+      setUser(currentUser);
       // console.log(currentUser);
       if (currentUser) {
         await axiosPublic.post(`/users/${currentUser?.email}`, {
@@ -77,7 +77,7 @@ function AuthProvider({ children }) {
           if (res.data?.token) {
             localStorage.setItem("Access-token", res.data.token);
             setLoading(false);
-            setUser(currentUser);
+            // setUser(currentUser);
             // console.log(res.data.token)
           }
         });

@@ -26,10 +26,10 @@ export default function useAxiosSecure() {
     },
     async (error) => {
       const status = error.response?.status;
-      // console.log("status error in the interceptors", error);
+      console.log("status error in the interceptors", error);
       if (status === 401 || status === 403) {
         await signout();
-        // console.log("Logout you unaccess token")
+        console.log("Logout you unaccess token")
         navigate("/login");
       }
       return Promise.reject(error);

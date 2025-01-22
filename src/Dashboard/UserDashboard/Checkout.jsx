@@ -65,6 +65,7 @@ function Checkout({ price, plan }) {
       setTransaction(paymentIntent.id);
 
       const paymentInfo = {
+        // title: 
         email: user?.email,
         price,
         plan,

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 // import login from '../assets/login.json'
 // import Lottie from "lottie-react";
 import login from '../assets/login.svg'
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../Shared_Context/AuthProvider";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
@@ -34,7 +34,7 @@ export default function Login() {
 
     try{
       await signIn(email,password)
-      toast.success("SignIn successfullt")
+      toast.success("SignIn successfull")
       navigate(from , {replace:true})
     }catch(err){
       toast.error(err?.message)
@@ -106,9 +106,14 @@ export default function Login() {
   
           {/* Login Button */}
           <div className="form-control">
-            <button className="btn bg-lime-400 text-black font-medium w-full">
+            <button className="btn bg-green-400 text-black font-medium w-full">
               Login
             </button>
+          </div>
+          <div className="form-control mt-5">
+            <Link to={'/registration'} className="btn btn-outline font-medium w-full">
+              Registration
+            </Link>
           </div>
         </form>
       </div>

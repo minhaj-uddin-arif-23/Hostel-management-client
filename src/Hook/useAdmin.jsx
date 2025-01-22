@@ -8,6 +8,7 @@ export default function useAdmin() {
   const axiosSequre = useAxiosSecure();
   const { data: isAdmin,isPending:isAdminPending } = useQuery({
     queryKey: [user?.email, "isAdmin"],
+    enabled:!!user?.email && !!localStorage.getItem("Access-token"),
     queryFn: async () => {
       const res = await axiosSequre.get(`/user/admin/${user?.email}`);
       // console.log(res.data);

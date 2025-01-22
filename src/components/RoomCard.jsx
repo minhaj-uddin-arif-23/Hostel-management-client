@@ -5,11 +5,19 @@ import { MdTv } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
 import { FaSnowflake } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
+import toast from "react-hot-toast";
 export default function RoomCard({ roomData }) {
   const { name, image, rating, price, Sdes, capacity } = roomData || {};
+  const booked = () => {
+    toast.success("Your room booked")
+  }
 
   return (
-    <div className="flex justify-center">
+   <div>
+<div>
+  {/* TODO: some text banner add */}
+</div>
+ <div className="flex justify-center">
       <div className="card card-compact w-80 bg-white shadow-xl border rounded-lg">
         <figure>
           <img
@@ -42,12 +50,13 @@ export default function RoomCard({ roomData }) {
           </div>
           <div className="card-actions flex justify-between">
             <Link
-              to={`/rooms/${roomData.id}`}
+              // to={`/rooms/${roomData.id}`}
               className="btn btn-sm btn-outline border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors"
             >
               View Details
             </Link>
             <button
+            onClick={booked}
               className="btn btn-sm bg-yellow-500 border-none text-white hover:bg-yellow-600 transition-colors"
             >
               Book Now
@@ -56,5 +65,6 @@ export default function RoomCard({ roomData }) {
         </div>
       </div>
     </div>
+   </div>
   );
 }
