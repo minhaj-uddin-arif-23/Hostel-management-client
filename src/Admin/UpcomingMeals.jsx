@@ -134,6 +134,7 @@ export default function UpcomingMeals() {
               <th>Title</th>
               <th>Category</th>
               <th>Image</th>
+              <th>Like</th>
               <th>Price</th>
               <th>Ingredients</th>
               <th>Description</th>
@@ -149,6 +150,7 @@ export default function UpcomingMeals() {
                 <td className="px-4 py-3">
                   <img src={meal.image} className="rounded-md w-20" alt="" />
                 </td>
+                <td className="px-4 py-3 text-sm text-gray-700">{meal.like}</td>
                 <td className="px-4 py-3 text-sm text-gray-700">${meal.price}</td>
                 <td className="px-4 py-3 text-sm text-gray-700">{meal.Ingredients}</td>
                 <td className="px-4 py-3 text-sm text-gray-700">{meal.Description}</td>

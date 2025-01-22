@@ -11,7 +11,7 @@ export default function AllMeals() {
   const itemsPerPage = 10; // Number of items per page
 
   const { data: meals = [], isLoading } = useQuery({
-    queryKey: ["meals", currentPage],
+    queryKey: ["meals", currentPage,sortBy],
     queryFn: async () => {
       const res = await axiosSecure.get(
         `/all-meal-show?page=${currentPage}&size=${itemsPerPage}&sort=${sortBy}`
@@ -36,7 +36,7 @@ export default function AllMeals() {
         <div>
           <button
             className={`btn btn-outline btn-sm text-gray-700 ${
-              sortBy === "like" ? "btn-primary" : ""
+              sortBy !== "like" ? "" : "btn-primary"
             }`}
             onClick={() => setSortBy("like")}
           >

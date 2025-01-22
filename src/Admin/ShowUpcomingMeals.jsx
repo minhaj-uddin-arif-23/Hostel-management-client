@@ -10,6 +10,7 @@ export default function ShowUpcomingMeals() {
     queryKey:['showallMeal',currentPage],
     queryFn:async () =>{
       const {data} =await axiosSequre.get(`/upcoming-meal-show?page=${currentPage}&size=${itemPerPage}`)
+      // console.log('upcoming meals --> ',data)
       return data
     }
   })
