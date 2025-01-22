@@ -16,9 +16,9 @@ export default function AddMealForm({ closeModal }) {
   const { register, handleSubmit } = useForm();
   const axiosPublic = useAxiosPublic()
   const axiosSequre = useAxiosSecure();
-
+  
   const onSubmit = async (data) => {
-    const imageFile = { image: data.image[0] };
+    const imageFile = { image: data.image[0]};
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
         "content-Type": "multipart/form-data",

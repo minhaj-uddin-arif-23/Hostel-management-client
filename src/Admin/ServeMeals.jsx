@@ -3,15 +3,21 @@ import useAuth from "../Hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import Loading from "../components/Loading";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export default function ServeMeals() {
   // * status change to deliverd
   const [search, setSearch] = useState("");
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const axiosSequre = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(0);
   const itemPerPage = 10;
-  const { data: mealrequest = [], isLoading } = useQuery({
+  const {
+    data: mealrequest = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: [" mealrequest", search, currentPage],
     queryFn: async () => {
       const { data } = await axiosSequre.get(
@@ -20,9 +26,40 @@ export default function ServeMeals() {
       return data;
     },
   });
-  // console.log(mealrequest);
-  // console.log(search);
+
   // if (isLoading)  <Loading />;
+
+  // update user status for clicking the server button
+  const handleStatus = (id) => {
+    // console.log("status email ", id);
+    axiosSequre
+      .patch(`/update/status/${id}`, { status: "delivered" })
+      .then((res) => {
+        console.log("status data ", res.data);
+        if (res.data.modifiedCount > 0){
+          refetch();
+          Swal.fire({
+            title: `Status Updated Successfully Delivered`,
+            icon: "success",
+            draggable: true,
+          });
+        } else {
+          Swal.fire({
+            title: "Somthing was issue",
+            icon: "error",
+            draggable: true,
+          });
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Somthing was issue",
+          icon: "error",
+          draggable: true,
+        });
+      });
+  };
+
   const totalPage = Math.ceil(100 / itemPerPage);
   const pages = [...Array(totalPage).keys()];
 
@@ -71,11 +108,14 @@ export default function ServeMeals() {
                 <td className="px-4 py-3 text-sm text-gray-700">
                   {meal.User?.name}
                 </td>
-                <td className="px-4 py-3 text-sm text-gray-700">
+                <td className=" btn btn-sm rounded-full bg-blue-100 mt-2  ">
                   {meal.status}
                 </td>
                 <td>
-                  <button className="btn btn-accent btn-sm text-white">
+                  <button
+                    onClick={() => handleStatus(meal._id)}
+                    className="btn bg-green-300 rounded-full text-black "
+                  >
                     Serve
                   </button>
                 </td>

@@ -73,11 +73,11 @@ export default function RequestedMeals() {
             <td className="px-4 py-3 text-sm text-gray-800">{meal.title}</td>
             <td className="px-4 py-3 text-sm text-gray-800">{meal.like}</td>
             <td className="px-4 py-3 text-sm text-gray-800">{meal.review_count}</td>
-            <td className="px-4 py-3 text-sm text-gray-800">{meal.status}</td>
+            <td className="mt-3 text-sm text-gray-800 btn btn-sm bg-blue-100 rounded-full">{meal.status}</td>
             <td className="px-4 py-3">
               <button 
               onClick={() => handleDelete(meal._id)}
-              className="btn btn-sm bg-red-500 text-white rounded-full px-4 py-1 hover:bg-red-600">
+              className="btn btn-sm bg-red-500/90 text-white rounded-full px-4 py-1 hover:bg-red-600">
                 Cancel
               </button>
             </td>

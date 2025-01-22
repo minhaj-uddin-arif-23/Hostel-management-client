@@ -53,13 +53,13 @@ function MealDetails() {
   // * LIKE BUTTON INCREASE
   const handleLike = async () => {
     try {
-      const response = await axiosSequre.patch(`/meal/like/${_id}`, {
+      const response = await axiosSequre.patch(`/upcomingMeal/like/${_id}`, {
         userEmail: user?.email,
       });
 
       if (response.data.modifiedCount > 0) {
         toast.success("You liked this meal!");
-        // Optionally update the UI (increment the like count locally)
+        
       }
     } catch (error) {
       if (error.response?.status === 400) {
