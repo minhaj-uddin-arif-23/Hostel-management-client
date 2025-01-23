@@ -18,12 +18,13 @@ function Home() {
       <Slider />
       <MealTab />
       <Benefitslider />
+      <Upgrating />
       <MobileSlider />
       {/* category */}
       {/* fetured items/service */}
       {/* offer section */}
       {/* promotional */}
-      <Upgrating />
+    
       
       {/* <ContactForm /> */}
       <Card />
