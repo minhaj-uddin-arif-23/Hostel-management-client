@@ -44,12 +44,12 @@ export const router = createBrowserRouter([
         element: <Meals />,
       },
       {
-        path:'upcomingmeals',
-        element:<UpComingmeals />
+        path: "upcomingmeals",
+        element: <UpComingmeals />,
       },
       {
-        path:'room',
-        element:<Room />
+        path: "room",
+        element: <Room />,
       },
       {
         path: "Blog",
@@ -127,7 +127,6 @@ export const router = createBrowserRouter([
         path: "upcomingmeals",
         element: (
           <AdminRoute>
-           
             <UpcomingMeals />
           </AdminRoute>
         ),
@@ -136,7 +135,6 @@ export const router = createBrowserRouter([
         path: "addroom",
         element: (
           <AdminRoute>
-           
             <RoomaddForm />
           </AdminRoute>
         ),
@@ -178,7 +176,9 @@ export const router = createBrowserRouter([
         path: "updateItem/:id",
         element: <UpdateItem />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/meal-one-get/${params.id}`),
+          fetch(
+            `https://hostel-managemet-server2-r0p0uizpw-minhaj-uddin-arifs-projects.vercel.app/meal-one-get/${params.id}`
+          ),
       },
     ],
   },
