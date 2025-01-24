@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function AllReviews() {
   const axiosSequre = useAxiosSecure();
@@ -54,6 +55,11 @@ function AllReviews() {
 
   return (
     <div>
+       <div>
+        <Helmet>
+          <title>Hostel Management | All Reviews</title>
+        </Helmet>
+      </div>
   <div>All Reviews: {allreviews.length}</div>
   <div>
     <div className="overflow-x-auto">

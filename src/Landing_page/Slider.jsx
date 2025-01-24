@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
+import slide1 from '../assets/slied1.jpg'
+import slide2 from '../assets/slide2.jpg'
+import slide3 from '../assets/slide3.jpg'
+import slide4 from '../assets/slide4.jpg'
 export const Slider = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   const [userInputs, setUserInputs] = useState({});
@@ -8,31 +11,31 @@ export const Slider = () => {
 
   const carouselSlides = [
     {
-      img: "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: slide1,
       text: "Discover the beauty of nature in its purest form.",
       description:
         "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
-      img: "https://images.unsplash.com/photo-1508873881324-c92a3fc536ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: slide2,
       text: "Feel the serenity of calm waters.",
       description:
         "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
-      img: "https://images.unsplash.com/photo-1719749990914-a3ba54e6343f?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img:slide3,
       text: "Experience the energy of urban landscapes.",
       description:
         "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
-      img: "https://images.unsplash.com/photo-1467195468637-72eb862bb14e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: slide4,
       text: "Marvel at the colors of the setting sun.",
       description:
         "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
     },
     {
-      img: "https://images.unsplash.com/photo-1532155297578-a43684be8db8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: slide3,
       text: "Journey through the peaceful forests.",
       description:
         "The Hotel Management System is a comprehensive solution designed to streamline hotel operations, enhance customer experiences, and improve overall efficiency.",
@@ -72,7 +75,7 @@ export const Slider = () => {
   }, [nextSlider]);
 
   return (
-    <div className="h-60 w-full md:h-[470px] lg:h-[540px] relative overflow-hidden">
+    <div className="h-60 w-full md:h-[470px] lg:h-[540px] relative overflow-hidden z-10">
       {/* Arrow Left */}
       <button
         onClick={prevSlider}

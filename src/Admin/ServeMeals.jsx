@@ -5,6 +5,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import Loading from "../components/Loading";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 export default function ServeMeals() {
   // * status change to deliverd
@@ -66,6 +67,11 @@ export default function ServeMeals() {
   return (
     <div className="max-w-6xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       {/* Header and Search */}
+      <div>
+        <Helmet>
+          <title>Hostel Management | Serve meals</title>
+        </Helmet>
+      </div>
       <div className="mb-6 flex justify-between items-center">
         <h1 className="text-2xl font-semibold text-gray-800">
           Total Meal Requests: {mealrequest.length}

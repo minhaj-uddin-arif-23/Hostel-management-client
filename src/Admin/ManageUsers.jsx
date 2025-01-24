@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FaUsers } from "react-icons/fa";
 import toast from "react-hot-toast";
 import Loading from "../components/Loading";
+import { Helmet } from "react-helmet";
 
 function ManageUsers() {
     const [search, setSearch] = useState("");
@@ -76,6 +77,11 @@ function ManageUsers() {
     };
     return (
         <div className="p-6 space-y-6">
+           <div>
+        <Helmet>
+          <title>Hostel Management | Manage users</title>
+        </Helmet>
+      </div>
         {/* Search and User Count Section */}
         <div className="flex justify-between items-center">
           <input

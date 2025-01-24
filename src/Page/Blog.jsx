@@ -1,9 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { FaPenFancy, FaClock, FaTags } from "react-icons/fa";
 
 function Blog() {
   return (
     <div>
+       <Helmet>
+        <title> Hostel Management | Blog</title>
+      </Helmet>
       <div>
         <section class="text-center mb-10">
           <h1 class="text-4xl font-bold text-gray-800">Hostel News & Insights</h1>

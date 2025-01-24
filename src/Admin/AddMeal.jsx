@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hook/useAxiosPublic";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAuth";
+import { Helmet } from "react-helmet";
 const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -63,10 +64,19 @@ export default function AddMeal() {
 
   return (
     <div>
-      <div className="text-center text-4xl font-semibold text-lime-300">
-        <h1>What's new</h1>
-        <p>ADD ITEM</p>
-      </div>
+         <Helmet>
+      <title>Hostel Management | Add Meal</title>
+    </Helmet>
+    <div className="text-center space-y-2 bg-gradient-to-r from-lime-200 via-emerald-200 to-teal-200 p-6 rounded-lg shadow-lg">
+  <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+    What's Trending
+  </h1>
+  <p className="text-4xl text-gray-700 font-semibold ">
+    Add Meal
+  </p>
+</div>
+
+
       {/*  react hook form */}
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -4,6 +4,7 @@ import MealCard from "./MealCard";
 import useAxiosPublic from "../Hook/useAxiosPublic";
 import Loading from "../components/Loading";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
                                          
 export default function Meals() {
   const axiosPublic = useAxiosPublic();
@@ -28,6 +29,9 @@ export default function Meals() {
   // console.log(filter)
   return (
     <div>   
+      <Helmet>
+        <title> Hostel Management | Meals</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row justify-between mr-20">
         {/* search */}
         <div className="mb-4 md:mb-0">

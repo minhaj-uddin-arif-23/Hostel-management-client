@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import useAuth from '../../Hook/useAuth'
 import Loading from '../../components/Loading'
 import { format } from 'date-fns';
+import { Helmet } from 'react-helmet'
 export default function PaymentHistory() {
   const {user} = useAuth()
   const axiosSecure = useAxiosSecure()
@@ -18,6 +19,9 @@ export default function PaymentHistory() {
   // console.log('payment history --> ',paymentHistory)
   return (
     <div>
+      <Helmet>
+        <title>Hostel Management | Payment History  </title>
+      </Helmet>
       <div>
       <h1 className='text-3xl font-semibold my-5'> Payment History for {user?.displayName} </h1>
       </div>
@@ -26,7 +30,7 @@ export default function PaymentHistory() {
   <table className="table">
     {/* head */}
     <thead>
-      <tr>
+      <tr className='font-semibold text-[16px]'>
         
         <th>Name</th>
         <th>Email</th>
@@ -34,7 +38,7 @@ export default function PaymentHistory() {
         <th>Date</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody className='font-semibold text-[14px]'>
      
         <tr className="bg-base-200" key={paymentHistory._id}>
         <th>{user?.displayName}</th>

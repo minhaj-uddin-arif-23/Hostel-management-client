@@ -5,6 +5,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import AddMealForm from "./AddMealForm";
 import Loading from "../components/Loading";
 import ShowUpcomingMeals from "./ShowUpcomingMeals";
+import { Helmet } from "react-helmet";
 
 export default function UpcomingMeals() {
 
@@ -75,6 +76,11 @@ export default function UpcomingMeals() {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+       <div>
+        <Helmet>
+          <title>Hostel Management | Upcoming Meals</title>
+        </Helmet>
+      </div>
     {/* Add Upcoming Meal Button */}
     <div className="flex justify-between items-center mb-6 flex-col md:flex-row">
       <button

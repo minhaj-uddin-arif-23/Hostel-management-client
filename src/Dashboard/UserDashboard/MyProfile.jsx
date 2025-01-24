@@ -2,6 +2,7 @@ import React from 'react'
 import useAuth from '../../Hook/useAuth'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
+import { Helmet } from 'react-helmet'
 
 function MyProfile() {
   const {user} = useAuth()
@@ -16,6 +17,9 @@ function MyProfile() {
   // console.log(myProfile)
   return (
     <div>
+      <Helmet>
+        <title> Hostel Management | user Profile</title>
+      </Helmet>
       <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
   <h2 className="text-xl font-semibold text-gray-700 mb-4">My Profile</h2>
   <div className="overflow-x-auto">

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import { Helmet } from "react-helmet";
 
 export default function AllMeals() {
   const axiosSecure = useAxiosSecure();
@@ -29,6 +30,11 @@ export default function AllMeals() {
   return (
     <div className="max-w-6xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       {/* Header with Total Meals and Sort Buttons */}
+      <div>
+        <Helmet>
+          <title>Hostel Management | All meals</title>
+        </Helmet>
+      </div>
       <div className="mb-8 flex justify-between items-center">
         <div className="font-semibold text-lg text-gray-700">
           Total {meals.length} Meals

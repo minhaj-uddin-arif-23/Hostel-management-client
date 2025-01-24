@@ -5,9 +5,10 @@ import useAuth from "../../Hook/useAuth";
 import Loading from "../../components/Loading";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 export default function MyReviews() {
-  // TODO :  Add Edit and Delete functionality incomplete
+  
   const { id } = useParams();
   const { user } = useAuth();
   const axiosSequre = useAxiosSecure();
@@ -56,7 +57,11 @@ export default function MyReviews() {
   if (isLoading) <Loading />;
   // console.log("my review is",myreview);
   return (
+    // TODO Edit button functionality is  not ok
     <div>
+      <Helmet>
+        <title>Hostel Management | User Reviews</title>
+      </Helmet>
     <h1> MyReview: {myreview.length}</h1>
     <div className="overflow-x-auto">
       <table className="table w-full table-auto">

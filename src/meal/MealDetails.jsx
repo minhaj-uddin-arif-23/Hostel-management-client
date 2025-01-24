@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import useAuth from "../Hook/useAuth";
 import useAdmin from "../Hook/useAdmin";
 import Navbar from "../components/Navbar";
+import { Helmet } from "react-helmet";
 
 function MealDetails() {
   const [isAdmin] = useAdmin();
@@ -117,6 +118,9 @@ function MealDetails() {
       {/* <div>
         <Navbar />
       </div> */}
+      <Helmet>
+        <title>Hostel Management |  Meals Details</title>
+      </Helmet>
       <div className="flex items-center justify-center mt-10 px-4">
         <div className="card bg-white shadow-xl w-full max-w-lg rounded-lg overflow-hidden">
           {/* Image Section */}

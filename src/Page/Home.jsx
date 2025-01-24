@@ -8,11 +8,15 @@ import Upgrating from "../components/Upgrating";
 import Benefitslider from "../Sliders/Benefitslider";
 import MobileSlider from "../Sliders/MobileSlider";
 import Card from "../components/Card";
+import { Helmet } from "react-helmet";
 
 function Home() {
   return (
     <div className="w-11/12 mx-auto">
       <h1></h1>
+      <Helmet>
+        <title> Hostel Management | Home</title>
+      </Helmet>
       {/* All home components is Render this */}
       {/* <Loading /> */}
       <Slider />

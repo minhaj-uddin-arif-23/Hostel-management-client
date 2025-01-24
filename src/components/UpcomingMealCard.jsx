@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import toast from "react-hot-toast";
 import useAxiosPublic from "../Hook/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 export default function UpcomingMealCard({ items, user }) {
 
@@ -51,7 +52,11 @@ export default function UpcomingMealCard({ items, user }) {
   };
 
   return (
-    <div className="ml-12 md:ml-0">
+    <>
+    <Helmet>
+        <title> Hostel Management | Upcoming Meals</title>
+      </Helmet>
+      <div className="ml-12 md:ml-0">
       <div>
         <div className="card card-compact bg-white w-80 shadow-xl rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
           <figure>
@@ -96,5 +101,7 @@ export default function UpcomingMealCard({ items, user }) {
         </div>
       </div>
     </div>
+    </>
+   
   );
 }

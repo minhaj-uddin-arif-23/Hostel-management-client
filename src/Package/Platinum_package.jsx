@@ -1,9 +1,15 @@
 import React from 'react'
 import Payment from '../Dashboard/UserDashboard/Payment'
+import { Helmet } from 'react-helmet'
 
 export default function Platinum_package() {
   return (
-    <div className='w-11/12 mx-auto'>
+    <>
+    <Helmet>
+    <title>Hostel Management | Platinum Package</title>
+  </Helmet>
+
+  <div className='w-11/12 mx-auto'>
       <div className='grid grid-cols-12 '>
       <div className='grid col-span-6 ml-10 p-7 mt-10 bg-gray-50 rounded-lg shadow-md'>
       
@@ -38,5 +44,7 @@ export default function Platinum_package() {
       </div>
     </div>
     </div>
+    </>
+   
   )
 }

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import useAxiosSecure from '../Hook/useAxiosSecure'
 import useAuth from '../Hook/useAuth'
+import { Helmet } from 'react-helmet'
 
 export default function AdminProfile() {
   const {user} = useAuth()
@@ -25,6 +26,11 @@ export default function AdminProfile() {
 
 
   return (
+   <div>
+    <Helmet>
+      <title>Hostel Management | Admin Profile</title>
+    </Helmet>
+
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
     <h2 className="text-xl font-semibold text-gray-700 mb-4">
       {user?.displayName} you can add total {mealCount} meals
@@ -58,6 +64,7 @@ export default function AdminProfile() {
       </table>
     </div>
   </div>
+   </div>
   
   )
 }

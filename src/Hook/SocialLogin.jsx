@@ -7,7 +7,7 @@ import useAuth from './useAuth'
 import useAxiosPublic from './useAxiosPublic'
 
 function SocialLogin() {
-    const {google} =useAuth()
+  const {google} = useAuth()
   const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
   const handleGoogleLogin = () =>{

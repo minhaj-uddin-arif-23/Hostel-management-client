@@ -6,6 +6,7 @@ import { GiMeal } from "react-icons/gi";
 import { FaSnowflake } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 export default function RoomCard({ roomData }) {
   const { name, image, rating, price, Sdes, capacity } = roomData || {};
   const booked = () => {
@@ -15,6 +16,9 @@ export default function RoomCard({ roomData }) {
   return (
    <div>
 <div>
+  <Helmet>
+    <title>Hostel Management | Room </title>
+  </Helmet>
   {/* TODO: some text banner add */}
 </div>
  <div className="flex justify-center">

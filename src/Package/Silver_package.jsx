@@ -1,9 +1,14 @@
 import React from 'react';
 import Payment from '../Dashboard/UserDashboard/Payment';
+import { Helmet } from 'react-helmet';
 
 export default function Silver_package() {
   return (
-    <div className='w-11/12 mx-auto'>
+    <div>
+      <Helmet>
+        <title>Hostel Management | Silver Package</title>
+      </Helmet>
+      <div className='w-11/12 mx-auto'>
       <div className="grid grid-cols-12">
         {/* Left Section: Silver Package Description */}
         <div className="grid col-span-6 p-7 mt-4">
@@ -31,7 +36,7 @@ export default function Silver_package() {
               - Affordable pricing for essential services.<br />
               - Ideal for students or professionals seeking a cost-effective solution.<br />
               - Maintains a balance between quality and budget, ensuring your comfort and satisfaction.
-            </p>
+          </p>
             <p className="text-lg font-semibold text-gray-800 mt-4">
               Starting at just <span className="text-blue-600">$50/month</span>, the Silver Package is the perfect entry-level plan to meet your needs.
             </p>
@@ -43,6 +48,7 @@ export default function Silver_package() {
           <Payment plan="Silver Package" price={50} />
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { IoIosStarOutline } from "react-icons/io";
+import { Helmet } from "react-helmet";
 
 export default function RoomaddForm() {
   const [rating, setRating] = useState(null);
@@ -33,6 +34,11 @@ export default function RoomaddForm() {
   };
   return (
     <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+       <div>
+        <Helmet>
+          <title>Hostel Management | Add Room </title>
+        </Helmet>
+      </div>
     <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Add a New Room</h2>
     <form onSubmit={roomAddsubmit} className="space-y-5">
       {/* Room Name */}

@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import useAxiosPublic from "../Hook/useAxiosPublic";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet";
 // import NavbarExtra from "../Components/NavbarExtra";
 export default function PostReview() {
   const { user } = useAuth();
@@ -56,6 +57,11 @@ export default function PostReview() {
       {/* <div className="w-full mx-auto z-50 top-0 fixed">
         <NavbarExtra />
     </div> */}
+    <div>
+      <Helmet>
+          <title>Hostel Management | Review Meal</title>
+      </Helmet>
+    </div>
       <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-lime-50 via-yellow-50 to-pink-100">
         <div className="card w-full max-w-lg shadow-xl p-6 rounded-lg bg-gradient-to-r from-blue-200 to-blue-300">
           <h1 className="text-3xl font-bold text-center mb-4 text-gray-800">

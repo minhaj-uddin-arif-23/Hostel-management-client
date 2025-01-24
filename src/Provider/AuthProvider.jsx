@@ -64,6 +64,7 @@ function AuthProvider({ children }) {
       setUser(currentUser);
       // console.log(currentUser);
       if (currentUser) {
+        // save user info in data whnen user register and login or sign in
         await axiosPublic.post(`/users/${currentUser?.email}`, {
           name: currentUser?.displayName,
           image: currentUser?.photoURL,

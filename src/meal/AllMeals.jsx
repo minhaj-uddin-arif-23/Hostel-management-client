@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useMeal from "../Hook/useMeal";
 import MealCard from "./MealCard";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Helmet } from "react-helmet";
 
 export default function AllMeals() {
   const [meal] = useMeal(); // Assuming this hook provides initial meal data
@@ -25,6 +26,9 @@ export default function AllMeals() {
 
   return (
     <div>
+        <Helmet>
+      <title>Hostel Management | All Meals</title>
+    </Helmet>
       {/* SEARCH FUNCTIONALITY & FILTER FUNCTIONALITY */}
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-7">
         <InfiniteScroll

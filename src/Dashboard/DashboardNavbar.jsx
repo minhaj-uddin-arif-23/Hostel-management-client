@@ -145,7 +145,7 @@ export default function DashboardNavbar() {
                 className="flex items-center p-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded-md"
               >
                 <FaHome className="mr-3" />
-                Home
+                Back To Home
               </NavLink>
             </li>
             </>
@@ -295,7 +295,7 @@ export default function DashboardNavbar() {
                 className="flex items-center p-2 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded-md"
               >
                 <FaHome className="mr-3" />
-                Homes
+                Home
               </NavLink>
             </li>
             {/* Other mobile items */}

@@ -6,6 +6,7 @@ import useAuth from "../../Hook/useAuth";
 import Loading from "../../components/Loading";
 // import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 export default function RequestedMeals() {
   const { user } = useAuth();
   const axiosSequre = useAxiosSecure();
@@ -49,6 +50,9 @@ export default function RequestedMeals() {
 
   return (
     <div>
+      <Helmet>
+        <title>Hostel Management | Requested Meals User</title>
+      </Helmet>
       <div>
         {/* <h1>RequestedMeals{orderMeals.length}</h1> */}
       </div>
@@ -62,7 +66,7 @@ export default function RequestedMeals() {
           <th className="px-4 py-2 border-b">Like</th>
           <th className="px-4 py-2 border-b">Review Count</th>
           <th className="px-4 py-2 border-b">Status</th>
-          <th className="px-4 py-2 border-b"></th>
+          <th className="px-4 py-2 border-b">Actions</th>
         </tr>
       </thead>
 
