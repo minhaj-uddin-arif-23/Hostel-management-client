@@ -110,15 +110,15 @@ export const Slider = () => {
                 {slide.text}
               </h2>
             </div>
-            <div className="absolute inset-x-0 bottom-16 flex flex-col items-center gap-4 bg-black/50 text-white p-4">
-              <p className="text-sm md:text-base text-center">
+            <div className="absolute inset-x-0 bottom-16 flex flex-col items-center gap-4 bg-black/50 text-white md:p-4 ">
+              <p className="text-sm md:text-base text-center ">
                 {slide.description}
               </p>
               <input
                 type="text"
                 value={userInputs[idx] || ""}
                 onChange={handleInputChange}
-                className="w-96 max-x-sm p-2 rounded-lg text-black"
+                className=" max-x-sm p-2 rounded-lg text-black"
                 placeholder="Add your comment..."
               />
               <button

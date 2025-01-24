@@ -34,7 +34,7 @@ export default function UpcomingMealCard({ items, user }) {
       const response = await axiosPublic.patch(`/upcomingMeal/like/${_id}`, {
         userEmail: user?.email,
       });
-
+      console.log('like count',res.data)
       if (response.data.modifiedCount > 0) {
         toast.success("You liked this meal!");
         setLikes((prevLikes) => prevLikes + 1); 

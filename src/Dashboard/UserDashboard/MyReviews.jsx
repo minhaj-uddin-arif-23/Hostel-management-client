@@ -57,52 +57,49 @@ export default function MyReviews() {
   // console.log("my review is",myreview);
   return (
     <div>
-      <h1> MyReview : {myreview.length}</h1>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Like</th>
-                <th>edit</th>
-                <th>Delete</th>
-                <th>view meal buttons</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myreview?.map((item) => (
-                <>
-                  <tr className="bg-base-200">
-                    <th>{item.text}</th>
-                    <td>{}</td>
-                    <td>
-                      <button className="btn btn-sm btn-outline">Edit</button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(item._id)}
-                        className="btn btn-sm btn-error"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/meal/${item.meal_id}`}
-                        className="btn btn-sm btn-outline"
-                      >
-                        view meal
-                      </Link>
-                    </td>
-                  </tr>
-                </>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <h1> MyReview: {myreview.length}</h1>
+    <div className="overflow-x-auto">
+      <table className="table w-full table-auto">
+        {/* head */}
+        <thead>
+          <tr>
+            <th className="p-2 text-left">Title</th>
+            <th className="p-2 text-left">Like</th>
+            <th className="p-2 text-left">Edit</th>
+            <th className="p-2 text-left">Delete</th>
+            <th className="p-2 text-left">View Meal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {myreview?.map((item) => (
+            <tr className="bg-base-200 border-t">
+              <td className="p-2">{item.text}</td>
+              <td className="p-2"></td>
+              <td className="p-2">
+                <button className="btn btn-sm btn-outline">Edit</button>
+              </td>
+              <td className="p-2">
+                <button
+                  onClick={() => handleDelete(item._id)}
+                  className="btn btn-sm btn-error"
+                >
+                  Delete
+                </button>
+              </td>
+              <td className="p-2">
+                <Link
+                  to={`/meal/${item.meal_id}`}
+                  className="btn btn-sm btn-outline"
+                >
+                  View Meal
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+  </div>
+  
   );
 }

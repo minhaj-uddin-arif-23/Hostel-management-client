@@ -3,7 +3,7 @@ import useAxiosSecure from '../../Hook/useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
 import useAuth from '../../Hook/useAuth'
 import Loading from '../../components/Loading'
-
+import { format } from 'date-fns';
 export default function PaymentHistory() {
   const {user} = useAuth()
   const axiosSecure = useAxiosSecure()
@@ -19,7 +19,7 @@ export default function PaymentHistory() {
   return (
     <div>
       <div>
-      Payment History for {user?.displayName}
+      <h1 className='text-3xl font-semibold my-5'> Payment History for {user?.displayName} </h1>
       </div>
       <div>
       <div className="overflow-x-auto">
@@ -40,7 +40,7 @@ export default function PaymentHistory() {
         <th>{user?.displayName}</th>
         <td>{user?.email}</td>
         <td>{paymentHistory.plan}</td>
-        <td>{paymentHistory.date}</td>
+       <td>{format(new Date(paymentHistory.date), 'MMMM dd, yyyy')}</td>
       </tr>
       
     

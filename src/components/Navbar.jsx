@@ -87,7 +87,7 @@ function Navbar() {
           </div>
           <Link
             to="/"
-            className="text-2xl font-semibold flex items-center gap-3 lg:ml-2"
+            className="text-2xl font-semibold flex items-center gap-3 lg:ml-2 md:mr-5"
           >
             <HiBadgeCheck /> HOSTEL <span className="text-pink-500">GRUB</span>
           </Link>
@@ -164,7 +164,7 @@ function Navbar() {
                 </div>
               </div>
             ) : (
-              <div className="flex gap-3 mt-3">
+              <div className="flex gap-3 mt-3 hidden md:block lg:block">
                 <Link
                   to="/login"
                   className="border-2 btn btn-sm text-blue-900 font-semibold text-md"

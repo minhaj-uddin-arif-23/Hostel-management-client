@@ -10,7 +10,7 @@ export default function UpcomingMeals() {
 
   const [showallMeal,currentPage,setCurrentPage,itemPerPage] = ShowUpcomingMeals();
   const axiosSecure = useAxiosSecure();
-  const queryClient = useQueryClient(); // For invalidating and refetching queries
+  const queryClient = useQueryClient(); 
 
   // Fetch upcoming meals
   const { data: upcomingMeals = [], isLoading } = useQuery({
@@ -22,12 +22,12 @@ export default function UpcomingMeals() {
   });
   const publishMealMutation = useMutation({
     mutationFn: async (meal) => {
-      // POST request to your API to publish the meal
+
       const response = await axiosSecure.post("/publish-meal", meal);
       return response.data;
     },
     onSuccess: () => {
-      // Show success message
+
       Swal.fire("Published!", "Meal has been published successfully!", "success");
   
       // Refetch the Meals query to update the Meals component
@@ -48,7 +48,7 @@ export default function UpcomingMeals() {
       // Show success message
       Swal.fire("Success!", "Meal added successfully!", "success");
 
-      // Invalidate and refetch the query to update the UI
+      
       queryClient.invalidateQueries({ queryKey: ["upcomingMeals"] });
     },
     onError: (error) => {
