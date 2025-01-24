@@ -177,7 +177,7 @@ export const router = createBrowserRouter([
         element: <UpdateItem />,
         loader: ({ params }) =>
           fetch(
-            `https://hostel-managemet-server2-r0p0uizpw-minhaj-uddin-arifs-projects.vercel.app/meal-one-get/${params.id}`
+            `https://hostel-managemet-server2.vercel.app/meal-one-get/${params.id}`
           ),
       },
     ],
