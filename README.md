@@ -1,4 +1,6 @@
-
+<div align="center">
+  <img height="400" src="https://media.licdn.com/dms/image/v2/D562DAQGoCrUWWQGDzw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1739164761754?e=1739772000&v=beta&t=xsG6A4DznkId3H0N5dhyy0Tu47uIjNCaj1KbFnldZWU"  />
+</div>
 
 # 🏨 Hostel Management System  
 
